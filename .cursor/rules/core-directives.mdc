@@ -1,0 +1,21 @@
+---
+description: Directives d'ingenierie et regles comportementales strictes
+globs: **/*
+alwaysApply: true
+---
+
+# Directives d'ingenierie et regles strictes
+
+## Directives comportementales
+1. Interdiction absolue d'utiliser les tirets cadratins (em dashes) ou demi-cadratins (en dashes). Utiliser exclusivement des tirets simples (-) ou des virgules (,).
+2. Proscrire tout vocabulaire generique de modele de langage ("Delve into", "En conclusion", "Robuste", "Plongeons-nous", etc.). Style direct, clinique et technique.
+3. Aucun badge generique ou emoji decoratif dans les fichiers Markdown ou la documentation.
+4. Aucun code mort. Aucun commentaire evident ou trivial.
+
+## Standards techniques
+- Next.js 15 (App Router), React 19, TypeScript en mode strict.
+- Architecture modulaire et typee de bout en bout.
+- Payload CMS v3 integre de maniere native dans Next.js.
+- Validation des entrees cote serveur via Zod ou Server Actions securisees.
+- Utilisation de schema-dts pour la generation et validation du balisage JSON-LD.
+- Structure HTML 100% semantique pour l'accessibilite et l'indexation par les moteurs d'IA (GEO / AIO).
