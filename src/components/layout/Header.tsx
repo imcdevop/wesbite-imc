@@ -357,7 +357,7 @@ export function Header() {
         {activeMenu === "formations" && (
           <div
             onMouseEnter={clearCloseTimer}
-            className="hidden lg:block absolute left-0 right-0 top-full bg-white border-t border-slate-100 z-50"
+            className="hidden lg:block absolute left-0 right-0 top-full bg-white border-t border-slate-100 border-b-4 border-brand-600 z-50 shadow-xl"
             style={{
               boxShadow: "0 8px 24px -4px rgba(15, 23, 42, 0.06)",
               animation: "menuReveal 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards",
@@ -403,19 +403,26 @@ export function Header() {
                     </ul>
                   </div>
 
-                  <div className="bg-slate-50 border border-slate-100 p-5 rounded-sm">
-                    <p className="text-[12px] font-bold text-slate-900 uppercase tracking-wider mb-1.5">
-                      Catalogue Officiel IMC
+                  <div className="border-2 border-slate-900 bg-white p-5 shadow-[5px_5px_0_#004b88] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-brand-700 bg-brand-50 px-2 py-0.5 border border-brand-200">
+                        Catalogue 2026
+                      </span>
+                      <span className="text-xs font-mono font-bold text-slate-900">44 Formations</span>
+                    </div>
+                    <p className="text-[14px] font-bold text-slate-900 leading-snug mb-1">
+                      7 Domaines Couverts
                     </p>
-                    <p className="text-[13px] text-slate-600 leading-relaxed mb-4">
-                      7 domaines couverts, 44 formations certifiantes pour étudiants et cadres.
+                    <p className="text-[12px] text-slate-600 leading-relaxed mb-4">
+                      Formations certifiantes pour étudiants et cadres d'entreprise.
                     </p>
                     <Link
                       href="/formations"
                       onClick={close}
-                      className="inline-flex items-center text-[12px] font-bold uppercase tracking-wider text-brand-600 hover:text-brand-700 transition-colors"
+                      className="btn-imc-primary w-full py-2.5 px-3 text-[11px] text-center"
                     >
-                      Consulter les 44 formations &rarr;
+                      <span>Consulter les 44 formations</span>
+                      <span>&rarr;</span>
                     </Link>
                   </div>
                 </div>

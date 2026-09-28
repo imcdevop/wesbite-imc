@@ -95,10 +95,10 @@ function FormationsContent() {
                 key={dom.id}
                 type="button"
                 onClick={() => setSelectedDomain(selectedDomain === dom.id ? "all" : dom.id)}
-                className={`p-4 border text-left transition-all ${
+                className={`p-4 border-2 text-left transition-all ${
                   selectedDomain === dom.id
-                    ? "border-brand-600 bg-brand-50/50 shadow-sm"
-                    : "border-slate-200 bg-white hover:border-slate-300"
+                    ? "border-slate-900 bg-brand-50 shadow-[4px_4px_0_#004b88] -translate-x-0.5 -translate-y-0.5"
+                    : "border-slate-200 bg-white hover:border-slate-900 hover:shadow-[3px_3px_0_#004b88]"
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
@@ -106,7 +106,7 @@ function FormationsContent() {
                     className="w-2.5 h-2.5 rounded-full"
                     style={{ backgroundColor: dom.color }}
                   />
-                  <span className="text-[11px] font-mono text-slate-400">{dom.count}</span>
+                  <span className="text-[11px] font-mono font-bold text-slate-500">{dom.count}</span>
                 </div>
                 <div className="font-bold text-sm text-slate-900 leading-tight">
                   {dom.name}
@@ -117,7 +117,7 @@ function FormationsContent() {
         </div>
 
         {/* Barre de Recherche et Filtres */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-200">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-8 pb-6 border-b-2 border-slate-200">
           {/* Recherche textuelle */}
           <div className="relative flex-1 max-w-md">
             <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -126,7 +126,7 @@ function FormationsContent() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Rechercher une formation, un mot-clé..."
-              className="w-full pl-10 pr-4 py-2.5 text-sm border border-slate-300 focus:outline-none focus:border-brand-600 bg-white"
+              className="w-full pl-10 pr-4 py-2.5 text-sm border-2 border-slate-300 focus:outline-none focus:border-slate-900 bg-white font-medium"
             />
           </div>
 
@@ -138,13 +138,13 @@ function FormationsContent() {
                 setSelectedDomain("all");
                 setSearchQuery("");
               }}
-              className="text-xs text-brand-600 hover:text-brand-700 font-semibold self-start sm:self-center"
+              className="text-xs text-brand-600 hover:text-brand-700 font-bold self-start sm:self-center uppercase tracking-wider"
             >
               Réinitialiser les filtres (Afficher les 44 formations)
             </button>
           )}
 
-          <div className="text-xs text-slate-500 font-medium">
+          <div className="text-xs text-slate-600 font-bold">
             {filteredFormations.length} formation{filteredFormations.length > 1 ? "s" : ""}{" "}
             affichée{filteredFormations.length > 1 ? "s" : ""}
           </div>
@@ -152,8 +152,8 @@ function FormationsContent() {
 
         {/* Grille des Formations */}
         {filteredFormations.length === 0 ? (
-          <div className="text-center py-20 bg-slate-50 border border-slate-200 p-8">
-            <p className="text-base text-slate-600 mb-2">
+          <div className="text-center py-20 bg-slate-50 border-2 border-slate-900 p-8 shadow-[6px_6px_0_#004b88]">
+            <p className="text-base text-slate-800 font-bold mb-2">
               Aucune formation ne correspond à votre recherche "{searchQuery}".
             </p>
             <button
@@ -162,9 +162,9 @@ function FormationsContent() {
                 setSelectedDomain("all");
                 setSearchQuery("");
               }}
-              className="mt-4 text-xs font-bold uppercase tracking-wider text-brand-600 hover:text-brand-700"
+              className="btn-imc-primary mt-4 text-xs py-3 px-6"
             >
-              Afficher toutes les formations
+              Afficher toutes les 44 formations
             </button>
           </div>
         ) : (
@@ -173,14 +173,14 @@ function FormationsContent() {
               <Link
                 key={item.slug}
                 href={`/formations/${item.slug}`}
-                className="group flex flex-col justify-between border border-slate-200 bg-white p-7 hover:border-brand-600 hover:shadow-sm transition-all"
+                className="card-brutal-imc group flex flex-col justify-between p-7 text-left"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-bold uppercase tracking-widest text-brand-600">
+                    <span className="text-[11px] font-bold uppercase tracking-widest px-2.5 py-0.5 border border-slate-900 bg-slate-100 text-slate-900">
                       {item.domainName}
                     </span>
-                    <span className="text-xs font-mono text-slate-400">
+                    <span className="text-xs font-mono font-bold text-slate-500">
                       N° {String(item.id).padStart(2, "0")} • p.{item.pageNumber}
                     </span>
                   </div>
@@ -214,10 +214,10 @@ function FormationsContent() {
         )}
 
         {/* Section Accompagnement & Inscription */}
-        <div className="mt-20 border border-slate-200 bg-slate-50 p-8 sm:p-12">
+        <div className="mt-20 border-2 border-slate-900 bg-slate-50 p-8 sm:p-12 shadow-[8px_8px_0_#004b88]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8">
-              <span className="text-xs font-bold uppercase tracking-widest text-brand-600 mb-2 block">
+              <span className="text-xs font-bold uppercase tracking-widest text-brand-700 bg-brand-50 px-2.5 py-1 border border-brand-200 mb-3 inline-block">
                 Session inter & intra-entreprises
               </span>
               <h2 className="font-display text-2xl sm:text-3xl font-bold text-slate-900 mb-4">
@@ -231,15 +231,15 @@ function FormationsContent() {
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-4 justify-end">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-6 py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs uppercase tracking-wider transition-colors text-center"
+                className="btn-imc-primary py-4 px-6 text-xs text-center"
               >
                 Demander un devis / S'inscrire
               </Link>
               <Link
                 href="/a-propos"
-                className="inline-flex items-center justify-center px-6 py-3.5 border border-slate-300 hover:border-slate-400 text-slate-800 font-bold text-xs uppercase tracking-wider transition-colors text-center"
+                className="btn-imc-secondary py-4 px-6 text-xs text-center"
               >
-                Découvrir l'Institut IMC
+                Découvrir le Centre IMC
               </Link>
             </div>
           </div>
