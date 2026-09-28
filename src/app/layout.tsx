@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { Header } from "@/components/layout/Header";
 import { SmoothScroll } from "@/components/common/SmoothScroll";
+import { Preloader } from "@/components/common/Preloader";
 
 export const metadata: Metadata = {
   title: "IMC Alger | Institut de Management et de Communication",
@@ -54,6 +55,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col font-sans bg-white antialiased">
+        <Preloader />
         <SmoothScroll />
         <Header />
         <main className="flex-1">{children}</main>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IMC Alger — Animation Logo (Minimal & Élégant)</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #0f172a;
+      font-family: system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .logo-container {
+      width: 220px;
+      height: 164px; /* 1632 x 1216 ratio */
+      position: relative;
+    }
+
+    @media (min-width: 640px) {
+      .logo-container {
+        width: 260px;
+        height: 194px;
+      }
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    /* Keyframes */
+    @keyframes animDot {
+      0% {
+        opacity: 0;
+        transform: translateY(-40px) scale(0.7);
+      }
+      40% {
+        opacity: 1;
+        transform: translateY(4px) scale(1.04);
+      }
+      65%, 100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes animScaleYTop {
+      0% {
+        opacity: 0;
+        transform: scaleY(0);
+      }
+      30% {
+        opacity: 1;
+      }
+      70%, 100% {
+        opacity: 1;
+        transform: scaleY(1);
+      }
+    }
+
+    @keyframes animScaleYBottom {
+      0% {
+        opacity: 0;
+        transform: scaleY(0);
+      }
+      30% {
+        opacity: 1;
+      }
+      70%, 100% {
+        opacity: 1;
+        transform: scaleY(1);
+      }
+    }
+
+    @keyframes animScaleXLeft {
+      0% {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      30% {
+        opacity: 1;
+      }
+      75%, 100% {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+    }
+
+    @keyframes animGlint {
+      0% {
+        opacity: 0;
+        transform: translateX(-150%) skewX(-25deg);
+      }
+      40% {
+        opacity: 0.8;
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(260%) skewX(-25deg);
+      }
+    }
+
+    /* Running animation */
+    .is-running .anim-dot {
+      animation: animDot 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .is-running .anim-stem {
+      transform-origin: 101px 301px;
+      animation: animScaleYTop 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: 60ms;
+    }
+
+    .is-running .anim-m-left {
+      transform-origin: 420px 1216px;
+      animation: animScaleYBottom 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: 120ms;
+    }
+
+    .is-running .anim-m-mid {
+      transform-origin: 720px 0px;
+      animation: animScaleYTop 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: 180ms;
+    }
+
+    .is-running .anim-m-right {
+      transform-origin: 1011px 1216px;
+      animation: animScaleYBottom 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: 240ms;
+    }
+
+    .is-running .anim-c-top {
+      transform-origin: 1226px 101px;
+      animation: animScaleXLeft 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: 300ms;
+    }
+
+    .is-running .anim-c-bottom {
+      transform-origin: 1226px 1112px;
+      animation: animScaleXLeft 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: 350ms;
+    }
+
+    .is-running .anim-glint {
+      animation: animGlint 0.75s cubic-bezier(0.4, 0, 0.2, 1) both;
+      animation-delay: 650ms;
+    }
+
+    .replay-hint {
+      margin-top: 40px;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      transition: color 0.2s ease;
+    }
+
+    .stage:hover .replay-hint {
+      color: #004b88;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stage is-running" id="stage" title="Cliquez pour rejouer l'animation">
+    <div class="logo-container">
+      <svg viewBox="0 0 1632 1216" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="imcGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#5a86b6" />
+            <stop offset="58%" stop-color="#00629b" />
+            <stop offset="100%" stop-color="#004b88" />
+          </linearGradient>
+
+          <linearGradient id="imcSheen" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="rgba(255,255,255,0)" />
+            <stop offset="50%" stop-color="rgba(255,255,255,0.75)" />
+            <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+          </linearGradient>
+
+          <clipPath id="imcClip">
+            <rect x="0.01" y="0" width="202.63" height="202.63" rx="3" />
+            <rect x="0" y="301.85" width="202.91" height="913.92" rx="3" />
+            <rect x="319.05" y="0" width="202.63" height="1215.75" rx="3" />
+            <rect x="618.82" y="0" width="202.63" height="593.69" rx="3" />
+            <rect x="910.25" y="0" width="202.62" height="1215.75" rx="3" />
+            <rect x="1226.70" y="0" width="405.25" height="202.63" rx="3" />
+            <rect x="1226.70" y="1011.59" width="405.25" height="202.63" rx="3" />
+          </clipPath>
+        </defs>
+
+        <g fill="url(#imcGrad)">
+          <rect class="anim-dot" x="0.01" y="0" width="202.63" height="202.63" rx="3" />
+          <rect class="anim-stem" x="0" y="301.85" width="202.91" height="913.92" rx="3" />
+          <rect class="anim-m-left" x="319.05" y="0" width="202.63" height="1215.75" rx="3" />
+          <rect class="anim-m-mid" x="618.82" y="0" width="202.63" height="593.69" rx="3" />
+          <rect class="anim-m-right" x="910.25" y="0" width="202.62" height="1215.75" rx="3" />
+          <rect class="anim-c-top" x="1226.70" y="0" width="405.25" height="202.63" rx="3" />
+          <rect class="anim-c-bottom" x="1226.70" y="1011.59" width="405.25" height="202.63" rx="3" />
+        </g>
+
+        <g clip-path="url(#imcClip)">
+          <rect class="anim-glint" x="-250" y="-100" width="300" height="1500" fill="url(#imcSheen)" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="replay-hint">Cliquez pour rejouer</div>
+  </div>
+
+  <script>
+    const stage = document.getElementById('stage');
+    stage.addEventListener('click', () => {
+      stage.classList.remove('is-running');
+      void stage.offsetWidth;
+      stage.classList.add('is-running');
+    });
+  </script>
+</body>
+</html>
