@@ -3764,6 +3764,7 @@ a:hover .arrow, .guide-card:hover .arrow { transform: translateX(5px); }
     line-height: 1.45;
     display: -webkit-box;
     -webkit-line-clamp: 4;
+    line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
