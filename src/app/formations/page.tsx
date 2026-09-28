@@ -102,11 +102,12 @@ function FormationsContent() {
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span
-                    className="w-2.5 h-2.5 rounded-full"
-                    style={{ backgroundColor: dom.color }}
-                  />
-                  <span className="text-[11px] font-mono font-bold text-slate-500">{dom.count}</span>
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">
+                    Domaine
+                  </span>
+                  <span className="text-[11px] font-mono font-bold px-1.5 py-0.5 border border-slate-200 bg-slate-50 text-slate-700">
+                    {dom.count}
+                  </span>
                 </div>
                 <div className="font-bold text-sm text-slate-900 leading-tight">
                   {dom.name}
@@ -181,7 +182,7 @@ function FormationsContent() {
                       {item.domainName}
                     </span>
                     <span className="text-xs font-mono font-bold text-slate-500">
-                      N° {String(item.id).padStart(2, "0")} • p.{item.pageNumber}
+                      N° {String(item.id).padStart(2, "0")} / p.{item.pageNumber}
                     </span>
                   </div>
 

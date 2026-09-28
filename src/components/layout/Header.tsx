@@ -279,13 +279,13 @@ export function Header() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
               <div className="grid grid-cols-12 gap-x-8">
                 <div className="col-span-4">
-                  <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-slate-400 mb-5">
-                    Institution
+                  <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-slate-400 mb-5 font-sans">
+                    Présentation
                   </p>
                   <ul className="space-y-0">
                     <li>
                       <Link href="/a-propos" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">
-                        A Propos
+                        À Propos de l'IMC
                       </Link>
                     </li>
                     <li>
@@ -299,14 +299,14 @@ export function Header() {
                       </Link>
                     </li>
                     <li>
-                      <Link href="/politique-qualite" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 transition-colors">
-                        Politique Qualite
+                      <Link href="/politique-qualite" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">
+                        Politique Qualité
                       </Link>
                     </li>
                   </ul>
                 </div>
                 <div className="col-span-4">
-                  <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-slate-400 mb-5">
+                  <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-slate-400 mb-5 font-sans">
                     Gouvernance
                   </p>
                   <ul className="space-y-0">
@@ -321,14 +321,14 @@ export function Header() {
                       </Link>
                     </li>
                     <li>
-                      <Link href="/nos-partenaires-internationaux" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 transition-colors">
+                      <Link href="/nos-partenaires-internationaux" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">
                         Partenaires internationaux
                       </Link>
                     </li>
                   </ul>
                 </div>
                 <div className="col-span-4">
-                  <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-slate-400 mb-5">
+                  <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-slate-400 mb-5 font-sans">
                     Services
                   </p>
                   <ul className="space-y-0">
@@ -339,12 +339,12 @@ export function Header() {
                     </li>
                     <li>
                       <Link href="/bibliotheque" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">
-                        Bibliotheque
+                        Bibliothèque
                       </Link>
                     </li>
                     <li>
-                      <Link href="/alumnis" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 transition-colors">
-                        Alumnis
+                      <Link href="/alumnis" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">
+                        Réseau Alumnis
                       </Link>
                     </li>
                   </ul>
@@ -357,64 +357,112 @@ export function Header() {
         {activeMenu === "formations" && (
           <div
             onMouseEnter={clearCloseTimer}
-            className="hidden lg:block absolute left-0 right-0 top-full bg-white border-t border-slate-100 border-b-4 border-brand-600 z-50 shadow-xl"
+            className="hidden lg:block absolute left-0 right-0 top-full bg-white border-t border-slate-100 border-b-2 border-brand-600 z-50 shadow-xl"
             style={{
-              boxShadow: "0 8px 24px -4px rgba(15, 23, 42, 0.06)",
+              boxShadow: "0 12px 28px -4px rgba(15, 23, 42, 0.08)",
               animation: "menuReveal 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards",
             }}
           >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
               <div className="grid grid-cols-12 gap-x-8">
-                <div className="col-span-4">
-                  <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-brand-600 mb-5">
-                    Tech & Marketing
-                  </p>
-                  <ul className="space-y-0">
-                    <li><Link href="/formations/big-data-analytics" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">Big Data & Analytics</Link></li>
-                    <li><Link href="/formations/cybersecurite" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">Cybersécurité & Réseaux</Link></li>
-                    <li><Link href="/formations/developpement-web-mobile" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">Développement Web & Mobile</Link></li>
-                    <li><Link href="/formations/ia-pour-tous-appliquer" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">Intelligence Artificielle & IA au Quotidien</Link></li>
-                    <li><Link href="/formations/marketing-digital" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">Marketing Digital & Stratégies</Link></li>
-                    <li><Link href="/formations/communication-numerique-reseaux-sociaux" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 transition-colors">Communication & Réseaux Sociaux</Link></li>
-                  </ul>
-                </div>
-                <div className="col-span-4">
-                  <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-brand-600 mb-5">
-                    Management & Finance
-                  </p>
-                  <ul className="space-y-0">
-                    <li><Link href="/formations/management-de-projet" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">Management de Projet</Link></li>
-                    <li><Link href="/formations/strategie-entreprise" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">Stratégie d'Entreprise & Décisions</Link></li>
-                    <li><Link href="/formations/leadership-strategique-communication" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">Leadership & Méthodes Agiles</Link></li>
-                    <li><Link href="/formations/audit-controle-gestion" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">Contrôle de Gestion & Audit</Link></li>
-                    <li><Link href="/formations/analyse-reporting-financier" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">Analyse Financière & Reporting</Link></li>
-                    <li><Link href="/formations/fintech" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 transition-colors">Fintech & Finance Numérique</Link></li>
-                  </ul>
-                </div>
-                <div className="col-span-4 flex flex-col justify-between">
-                  <div>
-                    <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-brand-600 mb-5">
-                      Supply Chain, RH & Droit
+                {/* Colonne 1 : TOUS LES 7 DOMAINES DANS UNE COLONNE SEPAREE */}
+                <div className="col-span-3 border-r border-slate-200 pr-6">
+                  <div className="flex items-center justify-between mb-3 pb-2 border-b border-slate-200">
+                    <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-brand-600 font-sans">
+                      Les 7 Domaines
                     </p>
-                    <ul className="space-y-0 mb-6">
-                      <li><Link href="/formations/introduction-supply-chain" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">Supply Chain & Logistique</Link></li>
-                      <li><Link href="/formations/gestion-ressources-humaines" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">Gestion des RH & Négociation</Link></li>
-                      <li><Link href="/formations/droit-des-affaires" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">Droit des Affaires</Link></li>
-                    </ul>
+                    <span className="text-[10px] font-mono font-bold text-slate-400 uppercase">
+                      Spécialités
+                    </span>
                   </div>
+                  <ul className="space-y-1">
+                    {[
+                      { id: "tech", name: "Tech", count: 12 },
+                      { id: "marketing", name: "Marketing", count: 9 },
+                      { id: "management", name: "Management", count: 7 },
+                      { id: "finance", name: "Finance", count: 8 },
+                      { id: "supply-chain", name: "Supply Chain", count: 4 },
+                      { id: "rh", name: "Ressources Humaines", count: 2 },
+                      { id: "droit", name: "Droit des Affaires", count: 1 },
+                    ].map((dom) => (
+                      <li key={dom.id}>
+                        <Link
+                          href={`/formations?domaine=${dom.id}`}
+                          onClick={close}
+                          className="flex items-center justify-between py-1.5 px-2 -mx-2 text-[13px] font-semibold text-slate-800 hover:text-brand-600 hover:bg-slate-50 transition-colors group"
+                        >
+                          <span className="group-hover:translate-x-1 transition-transform">{dom.name}</span>
+                          <span className="text-[11px] font-mono font-bold px-1.5 py-0.5 border border-slate-200 bg-white text-slate-500 group-hover:border-brand-600 group-hover:text-brand-600">
+                            {dom.count}
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-3 pt-3 border-t border-slate-200">
+                    <Link
+                      href="/formations"
+                      onClick={close}
+                      className="text-[11px] font-bold uppercase tracking-wider text-brand-600 hover:text-brand-700 flex items-center justify-between"
+                    >
+                      <span>Tous les domaines</span>
+                      <span>44 &rarr;</span>
+                    </Link>
+                  </div>
+                </div>
 
-                  <div className="border-2 border-slate-900 bg-white p-5 shadow-[5px_5px_0_#004b88] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-brand-700 bg-brand-50 px-2 py-0.5 border border-brand-200">
+                {/* Colonne 2 : FORMATIONS PHARES SELECTIONNEES (Espace Optimisé) */}
+                <div className="col-span-5 border-r border-slate-200 pr-6">
+                  <div className="flex items-center justify-between mb-3 pb-2 border-b border-slate-200">
+                    <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-slate-500 font-sans">
+                      Formations Phares
+                    </p>
+                    <span className="text-[10px] font-mono font-bold text-slate-400 uppercase">
+                      Plus demandées
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-x-5 gap-y-2">
+                    {[
+                      { href: "/formations/big-data-analytics", label: "Big Data & Analytics", sub: "Tech" },
+                      { href: "/formations/cybersecurite", label: "Cybersécurité & Réseaux", sub: "Tech" },
+                      { href: "/formations/ia-pour-tous-appliquer", label: "Intelligence Artificielle", sub: "Tech" },
+                      { href: "/formations/developpement-web-mobile", label: "Dév Web & Mobile", sub: "Tech" },
+                      { href: "/formations/marketing-digital", label: "Marketing Digital", sub: "Marketing" },
+                      { href: "/formations/management-de-projet", label: "Management de Projet", sub: "Management" },
+                      { href: "/formations/audit-controle-gestion", label: "Audit & Contrôle", sub: "Finance" },
+                      { href: "/formations/introduction-supply-chain", label: "Supply Chain", sub: "Supply Chain" },
+                    ].map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={close}
+                        className="py-1.5 px-2 -mx-2 hover:bg-slate-50 border-b border-slate-100 transition-colors block group"
+                      >
+                        <p className="text-[13px] font-semibold text-slate-900 group-hover:text-brand-600 transition-colors truncate">
+                          {item.label}
+                        </p>
+                        <p className="text-[11px] text-slate-400">
+                          {item.sub}
+                        </p>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Colonne 3 : CATALOGUE OFFICIEL & ACCES DIRECT */}
+                <div className="col-span-4 flex flex-col justify-between">
+                  <div className="border-2 border-slate-900 bg-white p-5 shadow-[4px_4px_0_#004b88]">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-brand-700 bg-brand-50 px-2 py-0.5 border border-brand-200">
                         Catalogue 2026
                       </span>
-                      <span className="text-xs font-mono font-bold text-slate-900">44 Formations</span>
+                      <span className="text-[11px] font-mono font-bold text-slate-900">44 Programmes</span>
                     </div>
                     <p className="text-[14px] font-bold text-slate-900 leading-snug mb-1">
-                      7 Domaines Couverts
+                      7 Domaines Spécialisés
                     </p>
                     <p className="text-[12px] text-slate-600 leading-relaxed mb-4">
-                      Formations certifiantes pour étudiants et cadres d'entreprise.
+                      Formations professionnelles certifiantes conçues pour les étudiants et les cadres en entreprise.
                     </p>
                     <Link
                       href="/formations"
@@ -423,6 +471,13 @@ export function Header() {
                     >
                       <span>Consulter les 44 formations</span>
                       <span>&rarr;</span>
+                    </Link>
+                  </div>
+
+                  <div className="mt-3 pt-3 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
+                    <span>Sessions toute l'année</span>
+                    <Link href="/contact" onClick={close} className="font-semibold text-brand-600 hover:underline">
+                      Demander un devis &rarr;
                     </Link>
                   </div>
                 </div>

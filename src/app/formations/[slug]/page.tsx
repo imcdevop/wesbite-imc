@@ -95,7 +95,7 @@ export default async function CourseDetailPage({
               Domaine : {course.domainName}
             </span>
             <span className="text-xs font-mono text-slate-500">
-              Programme N° {String(course.id).padStart(2, "0")} • Catalogue p.{course.pageNumber}
+              Programme N° {String(course.id).padStart(2, "0")} / Catalogue p.{course.pageNumber}
             </span>
           </div>
 

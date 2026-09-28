@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { DOMAINS, FORMATIONS } from "@/data/catalogue";
 
@@ -10,128 +10,165 @@ const ArrowIcon = () => (
   </svg>
 );
 
+// 6 formations clés mises en avant sur la page d'accueil (pour garder la page légère)
+const FEATURED_HIGHLIGHTS = [
+  { slug: "big-data-analytics", domain: "Tech", title: "Big Data & Analytics", subtitle: "Maîtriser les Données Massives" },
+  { slug: "cybersecurite", domain: "Tech", title: "Cybersécurité", subtitle: "Protéger l'Entreprise à l'Ère Numérique" },
+  { slug: "ia-pour-tous-appliquer", domain: "Tech", title: "L'IA pour Tous", subtitle: "Comprendre et Appliquer" },
+  { slug: "marketing-digital", domain: "Marketing", title: "Marketing Digital", subtitle: "Maîtriser les Stratégies Numériques" },
+  { slug: "management-de-projet", domain: "Management", title: "Management de Projet", subtitle: "De la Vision à la Réalité" },
+  { slug: "audit-controle-gestion", domain: "Finance", title: "Audit & Contrôle de Gestion", subtitle: "Optimiser la Performance" },
+];
+
 export function FormationsSection() {
-  const [selectedDomain, setSelectedDomain] = useState<string>("all");
-
-  const filteredFormations =
-    selectedDomain === "all"
-      ? FORMATIONS
-      : FORMATIONS.filter((f) => f.domainId === selectedDomain);
-
   return (
     <section id="formations" className="py-20 lg:py-28 bg-white border-b-2 border-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* En-tête de section */}
-        <div className="grid grid-cols-12 gap-x-8 mb-12">
+        {/* En-tête épuré et sobre */}
+        <div className="grid grid-cols-12 gap-x-8 mb-14">
           <div className="col-span-12 lg:col-span-7">
-            <div className="inline-block px-3 py-1 mb-3 border-2 border-slate-900 bg-brand-50 text-brand-800 text-[11px] font-bold tracking-[0.2em] uppercase">
-              Catalogue Officiel IMC
-            </div>
+            <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-brand-600 block mb-3 font-sans">
+              7 Domaines Couverts
+            </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 leading-[1.1]">
-              Nos formations<span className="text-brand-600 cur font-mono font-bold">_</span>
+              Nos domaines de formation
             </h2>
           </div>
           <div className="col-span-12 lg:col-span-5 flex flex-col justify-end mt-4 lg:mt-0">
-            <p className="text-base text-slate-700 leading-relaxed font-medium">
-              7 domaines couverts et 44 programmes de formation certifiants spécialement conçus pour les étudiants et les cadres en entreprise.
+            <p className="text-base text-slate-600 leading-relaxed font-medium">
+              44 programmes de formation certifiants spécialement conçus pour accompagner la montée en compétences des étudiants et des cadres en entreprise.
             </p>
           </div>
         </div>
 
-        {/* Rail de filtres par domaine (Style Web Rocket Néo-Brutaliste adapté IMC) */}
-        <div className="mb-10 overflow-x-auto scrollbar-none pb-2">
-          <div className="flex gap-2 min-w-max">
-            <button
-              type="button"
-              onClick={() => setSelectedDomain("all")}
-              className={`pill-rail-item ${selectedDomain === "all" ? "active" : ""}`}
+        {/* Grille des 7 Domaines (Légère, claire et structurée) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+          {DOMAINS.map((domain) => (
+            <Link
+              key={domain.id}
+              href={`/formations?domaine=${domain.id}`}
+              className="border-2 border-slate-200 bg-white p-6 hover:border-slate-900 hover:shadow-[5px_5px_0_#004b88] transition-all duration-150 flex flex-col justify-between group"
             >
-              <span>Tous les domaines</span>
-              <span className="pill-badge">{FORMATIONS.length}</span>
-            </button>
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider">
+                    Domaine
+                  </span>
+                  <span className="text-xs font-mono font-bold px-2 py-0.5 border border-slate-300 bg-slate-50 text-slate-800">
+                    {domain.count} formation{domain.count > 1 ? "s" : ""}
+                  </span>
+                </div>
 
-            {DOMAINS.map((domain) => (
-              <button
-                key={domain.id}
-                type="button"
-                onClick={() => setSelectedDomain(domain.id)}
-                className={`pill-rail-item ${selectedDomain === domain.id ? "active" : ""}`}
+                <h3 className="font-display text-2xl font-bold text-slate-900 group-hover:text-brand-600 transition-colors mb-3">
+                  {domain.name}
+                </h3>
+
+                <p className="text-xs text-slate-600 leading-relaxed mb-6">
+                  {domain.description}
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-brand-600 group-hover:text-brand-700">
+                <span>Explorer le domaine</span>
+                <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+              </div>
+            </Link>
+          ))}
+
+          {/* 8ème carte : Accès direct à l'ensemble du catalogue */}
+          <div className="border-2 border-slate-900 bg-slate-900 text-white p-6 flex flex-col justify-between shadow-[5px_5px_0_#004b88]">
+            <div>
+              <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider block mb-4">
+                Catalogue Intégral
+              </span>
+              <h3 className="font-display text-2xl font-bold text-white mb-3">
+                Tous les Programmes
+              </h3>
+              <p className="text-xs text-slate-300 leading-relaxed mb-6">
+                Accédez aux fiches détaillées, objectifs pédagogiques et calendriers de nos 44 formations.
+              </p>
+            </div>
+            <Link
+              href="/formations"
+              className="btn-imc-primary w-full py-3 px-4 text-xs text-center"
+            >
+              <span>Voir les 44 formations</span>
+              <ArrowIcon />
+            </Link>
+          </div>
+        </div>
+
+        {/* Aperçu de quelques formations phares (6 cartes compactes au lieu de 44) */}
+        <div className="border-t border-slate-200 pt-12">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-slate-400 font-sans">
+                Aperçu Pédagogique
+              </p>
+              <h3 className="font-display text-xl font-bold text-slate-900">
+                Formations les plus demandées
+              </h3>
+            </div>
+            <Link
+              href="/formations"
+              className="text-xs font-bold uppercase tracking-wider text-brand-600 hover:text-brand-700 hidden sm:inline-flex items-center gap-1.5"
+            >
+              <span>Rechercher dans tout le catalogue</span>
+              <ArrowIcon />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {FEATURED_HIGHLIGHTS.map((item) => (
+              <Link
+                key={item.slug}
+                href={`/formations/${item.slug}`}
+                className="border border-slate-200 bg-slate-50/50 p-5 hover:border-slate-900 hover:bg-white hover:shadow-sm transition-all group block"
               >
-                <span
-                  className="w-2 h-2 rounded-full inline-block"
-                  style={{ backgroundColor: domain.color }}
-                />
-                <span>{domain.name}</span>
-                <span className="pill-badge">{domain.count}</span>
-              </button>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[11px] font-bold text-brand-700 uppercase tracking-wider">
+                    {item.domain}
+                  </span>
+                  <span className="text-xs text-slate-400 font-medium group-hover:text-slate-900 transition-colors">
+                    Fiche &rarr;
+                  </span>
+                </div>
+                <h4 className="font-display text-base font-bold text-slate-900 group-hover:text-brand-600 transition-colors mb-1">
+                  {item.title}
+                </h4>
+                <p className="text-xs text-slate-500">
+                  {item.subtitle}
+                </p>
+              </Link>
             ))}
           </div>
         </div>
 
-        {/* Grille des formations néo-brutalistes */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredFormations.map((formation) => (
-            <Link
-              key={formation.slug}
-              href={`/formations/${formation.slug}`}
-              className="card-brutal-imc group flex flex-col justify-between p-7 text-left"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-[11px] font-bold uppercase tracking-widest px-2.5 py-0.5 border border-slate-900 bg-slate-100 text-slate-900">
-                    {formation.domainName}
-                  </span>
-                  <span className="text-xs font-mono font-bold text-slate-500">
-                    N° {String(formation.id).padStart(2, "0")} • p.{formation.pageNumber}
-                  </span>
-                </div>
-
-                <h3 className="font-display text-xl font-bold text-slate-900 group-hover:text-brand-600 transition-colors leading-snug mb-2">
-                  {formation.title}
-                </h3>
-
-                <p className="text-sm font-semibold text-slate-700 mb-4 line-clamp-2">
-                  {formation.subtitle}
-                </p>
-
-                <p className="text-xs text-slate-600 leading-relaxed line-clamp-3 mb-6">
-                  {formation.description}
-                </p>
-              </div>
-
-              <div className="pt-4 border-t-2 border-slate-100 flex items-center justify-between text-xs">
-                <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px]">
-                  Étudiants & Cadres
-                </span>
-                <span className="inline-flex items-center gap-1.5 text-brand-600 font-bold uppercase tracking-wider group-hover:translate-x-1 transition-transform">
-                  <span>Détails</span>
-                  <ArrowIcon />
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {/* Pied de section / Lien vers catalogue complet */}
-        <div className="mt-14 p-8 border-2 border-slate-900 bg-slate-50 shadow-[6px_6px_0_#004b88] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        {/* Pied de section : Bannière d'accès vers le catalogue complet */}
+        <div className="mt-14 p-6 sm:p-8 border-2 border-slate-900 bg-slate-50 shadow-[6px_6px_0_#004b88] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span className="w-2.5 h-2.5 bg-brand-600"></span>
-              <p className="text-base font-bold text-slate-900 uppercase tracking-wide">
-                Catalogue Intégral 2026
-              </p>
-            </div>
-            <p className="text-sm text-slate-600">
-              Retrouvez l'ensemble des 44 programmes détaillés avec modules et inscriptions.
+            <p className="text-base font-bold text-slate-900 uppercase tracking-wide mb-1">
+              Vous recherchez une formation sur-mesure ou intra-entreprise ?
+            </p>
+            <p className="text-xs text-slate-600">
+              Nos conseillers pédagogiques conçoivent des parcours modulables adaptés à vos besoins.
             </p>
           </div>
-          <Link
-            href="/formations"
-            className="btn-imc-primary px-7 py-4 text-xs shrink-0"
-          >
-            <span>Consulter le catalogue complet</span>
-            <ArrowIcon />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+            <Link
+              href="/formations"
+              className="btn-imc-primary px-6 py-3.5 text-xs text-center"
+            >
+              <span>Consulter le catalogue (44)</span>
+              <ArrowIcon />
+            </Link>
+            <Link
+              href="/contact"
+              className="btn-imc-secondary px-6 py-3.5 text-xs text-center"
+            >
+              <span>Nous contacter</span>
+            </Link>
+          </div>
         </div>
       </div>
     </section>
