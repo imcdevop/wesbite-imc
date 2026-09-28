@@ -5,7 +5,7 @@ import { Header } from "@/components/layout/Header";
 export const metadata: Metadata = {
   title: "IMC Alger | Institut de Management et de Communication",
   description:
-    "Centre de formation supérieure et pôle d'excellence managériale et technologique à Alger. Cursus certifiants, Licences et Masters spécialisés.",
+    "Centre de formation en management et technologie a Alger. Formations pour etudiants et cadres, 7 domaines, 44 programmes professionnels.",
   metadataBase: new URL("https://imc-alger.com"),
   openGraph: {
     title: "IMC Alger | Institut de Management et de Communication",
@@ -21,7 +21,7 @@ const jsonLdOrg = {
   "@type": "EducationalOrganization",
   name: "IMC Alger, Institut de Management et de Communication",
   description:
-    "Etablissement de formation superieure et de perfectionnement professionnel en Algerie.",
+    "Centre de formation en management et perfectionnement professionnel en Algerie.",
   url: "https://imc-alger.com",
   logo: "https://imc-alger.com/logo-imc-full.svg",
   address: {

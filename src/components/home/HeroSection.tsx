@@ -1,45 +1,43 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { GraduationCap } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="relative w-full min-h-[640px] lg:min-h-[760px] flex items-center bg-slate-950 overflow-hidden">
-      {/* Image de fond pleine largeur */}
+    <section className="relative w-full h-screen min-h-[600px] max-h-[900px] flex items-center bg-slate-950 overflow-hidden -mt-[108px] pt-[108px]">
       <Image
         src="/hero-bg.jpg"
-        alt="Promotion des diplômés IMC"
+        alt="Formation IMC Alger"
         fill
         priority
         className="object-cover object-center"
         sizes="100vw"
       />
 
-      {/* Voile sombre pour lisibilite editoriale immediate */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/65 to-black/35" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/25" />
 
-      {/* Contenu textuel principal aligne a gauche */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div className="max-w-2xl text-left">
-          {/* Titre d'impact */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl">
           <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08] mb-6">
-            L'excellence passionnément
+            L'excellence passionnement
           </h1>
 
-          {/* Sous-titre institutionnel */}
-          <p className="font-sans text-base sm:text-xl text-slate-200 font-normal leading-relaxed mb-8 max-w-xl">
-            Le premier établissement privé de formation supérieure de management en Algérie!
+          <p className="font-sans text-base sm:text-lg text-white/80 font-normal leading-relaxed mb-10 max-w-xl">
+            Centre de formation pour etudiants et cadres en management, technologie et business en Algerie.
           </p>
 
-          {/* Action principale */}
-          <div>
+          <div className="flex items-center gap-4">
             <Link
-              href="#formations"
-              className="inline-flex items-center gap-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm sm:text-base px-7 py-3.5 transition-colors border border-brand-500 shadow-sm"
+              href="/formations"
+              className="inline-flex items-center bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm px-7 py-3.5 tracking-wide transition-colors"
             >
-              <span>Nos formations</span>
-              <GraduationCap className="w-5 h-5" />
+              Nos formations
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center border border-white/30 text-white hover:bg-white hover:text-slate-900 font-medium text-sm px-7 py-3.5 tracking-wide transition-colors"
+            >
+              Nous contacter
             </Link>
           </div>
         </div>
