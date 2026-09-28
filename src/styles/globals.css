@@ -166,3 +166,72 @@ body {
 .hover-underline-imc:hover {
   background-size: 100% 2px;
 }
+
+/* ==========================================================
+   LENIS SMOOTH SCROLL (SENSATION VELOUTÉE & CHARISMATIQUE)
+   ========================================================== */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ==========================================================
+   STYLE WEB ROCKET : ANIMATIONS SCROLL, HOVER OPACITY & TYPING
+   ========================================================== */
+
+/* Révélation au scroll fluide avec courbe de Bézier élégante */
+.rv {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.rv.vis {
+  opacity: 1;
+  transform: translateY(0);
+}
+.rv-d1 { transition-delay: 0.08s; }
+.rv-d2 { transition-delay: 0.16s; }
+.rv-d3 { transition-delay: 0.24s; }
+.rv-d4 { transition-delay: 0.32s; }
+.rv-d5 { transition-delay: 0.40s; }
+.rv-d6 { transition-delay: 0.48s; }
+.rv-d7 { transition-delay: 0.56s; }
+
+/* Tag brutaliste Web Rocket */
+.tag-wr {
+  display: inline-block;
+  font-family: var(--font-barlow), sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 12px;
+  border: 2px solid var(--color-border-strong);
+  background-color: #ffffff;
+  color: var(--color-text-primary);
+  margin-bottom: 14px;
+}
+
+/* Effet hover focus & opacity fluide sur la grille de cartes */
+.cards-focus-group .card-focus-item {
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.cards-focus-group:hover .card-focus-item {
+  opacity: 0.52;
+}
+.cards-focus-group:hover .card-focus-item:hover {
+  opacity: 1;
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 #004b88;
+  border-color: #0f172a;
+}
+
