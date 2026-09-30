@@ -235,3 +235,177 @@ html.lenis, html.lenis body {
   border-color: #0f172a;
 }
 
+/* ==========================================================
+   WEB ROCKET STYLE : CARTES EMPILÉES AU SCROLL (STACK-CARDS)
+   ========================================================== */
+.cases-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  position: relative;
+}
+
+.stack-card {
+  position: sticky;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 44px;
+  align-items: center;
+  border: 2px solid #0f172a;
+  border-radius: 0px;
+  padding: 44px 48px;
+  min-height: 440px;
+  box-shadow: 10px 10px 0 rgba(15, 23, 42, 0.95);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-white {
+  background: #ffffff;
+  color: #0f172a;
+}
+.card-yellow {
+  background: #ffc700;
+  color: #111111;
+}
+.card-gray {
+  background: #f4f6f9;
+  color: #0f172a;
+}
+.card-black {
+  background: #091322;
+  color: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 10px 10px 0 rgba(0, 98, 155, 0.95);
+}
+
+.card-white p, .card-gray p {
+  color: #475569;
+}
+.card-yellow p {
+  color: #1a1a1a;
+}
+.card-black p {
+  color: #94a3b8;
+}
+
+.case-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.case-tags span {
+  font-family: var(--font-barlow), sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1.5px solid currentColor;
+  padding: 3px 10px;
+}
+
+.case-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  font-family: var(--font-barlow), sans-serif;
+  font-size: 1.12rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 3px solid #004b88;
+  padding-bottom: 2px;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.card-yellow .case-link {
+  border-bottom-color: #0f172a;
+}
+.card-black .case-link {
+  border-bottom-color: #38bdf8;
+}
+
+.case-link:hover {
+  transform: translateX(4px);
+}
+.case-link .arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+.case-link:hover .arrow {
+  transform: translateX(5px);
+}
+
+/* Cadre navigateur style Web Rocket */
+.browser-frame {
+  border: 2px solid #0f172a;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 8px 8px 0 rgba(15, 23, 42, 0.85);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-black .browser-frame {
+  border-color: #ffffff;
+  box-shadow: 10px 10px 0 rgba(0, 98, 155, 0.9);
+}
+
+.browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-bottom: 2px solid #0f172a;
+  background: #f1f5f9;
+}
+
+.card-black .browser-bar {
+  border-color: #ffffff;
+  background: #111e30;
+}
+
+.browser-bar i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #0f172a;
+  opacity: 0.25;
+}
+
+.card-black .browser-bar i {
+  background: #ffffff;
+  opacity: 0.3;
+}
+
+.browser-bar i:first-child {
+  background: #ffc700;
+  opacity: 1;
+}
+
+.browser-frame img {
+  width: 100%;
+  aspect-ratio: 16 / 10.5;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  transition: transform 0.35s ease;
+}
+.browser-frame:hover img {
+  transform: scale(1.02);
+}
+
+@media (max-width: 1024px) {
+  .stack-card {
+    grid-template-columns: 1fr;
+    padding: 32px 24px;
+    gap: 28px;
+    min-height: auto;
+  }
+}
+
+
