@@ -70,64 +70,56 @@ export default async function CourseDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdCourse) }}
       />
 
-      {/* Fil d'ariane */}
-      <div className="border-b border-slate-200 bg-slate-50 py-3 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex items-center gap-2 text-xs text-slate-500">
-          <Link href="/" className="hover:text-slate-900 transition-colors">
-            Accueil
-          </Link>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <Link href="/formations" className="hover:text-slate-900 transition-colors">
-            Catalogue Formations
-          </Link>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-slate-900 font-medium truncate max-w-xs sm:max-w-md">
-            {course.title}
-          </span>
-        </div>
-      </div>
-
-      {/* En-tête du programme */}
-      <section className="border-b border-slate-200 py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-slate-50/60">
+      {/* En-tête exécutif du programme */}
+      <section className="border-b-2 border-slate-900 py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap items-center gap-3 mb-4">
-            <span className="px-2.5 py-1 text-xs font-bold uppercase tracking-wider bg-brand-50 text-brand-700 border border-brand-200">
-              Domaine : {course.domainName}
+            <span className="inline-block px-2.5 py-1 text-xs font-mono font-bold uppercase tracking-wider bg-slate-900 text-white mb-3">
+              DOMAINE : {course.domainName}
             </span>
-            <span className="text-xs font-mono text-slate-500">
-              Programme N° {String(course.id).padStart(2, "0")} / Catalogue p.{course.pageNumber}
+            <span className="inline-block px-2.5 py-1 text-xs font-mono font-bold uppercase tracking-wider bg-brand-600 text-white mb-3">
+              PROGRAMME N° {String(course.id).padStart(2, "0")}
             </span>
           </div>
 
-          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-3 max-w-4xl leading-tight">
+          <h1 className="font-head text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 mb-4 max-w-4xl uppercase leading-[1.04]">
             {course.title}
           </h1>
 
-          <p className="text-lg sm:text-xl font-medium text-slate-700 mb-6 max-w-3xl">
+          <p className="text-lg sm:text-xl font-medium text-slate-700 mb-6 max-w-3xl leading-relaxed">
             {course.subtitle}
           </p>
 
-          <p className="font-sans text-base text-slate-600 max-w-3xl leading-relaxed mb-8">
+          <p className="font-sans text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed mb-8">
             {course.description}
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl border-t border-slate-200 pt-6">
-            <div className="flex items-center gap-3 text-sm text-slate-700">
-              <Users className="w-4 h-4 text-brand-600 shrink-0" />
-              <span>
-                <strong>Public :</strong> {course.targetAudience}
+          {/* Métriques clés en cartes néo-brutalistes */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl pt-4">
+            <div className="border-2 border-slate-900 bg-white p-4 shadow-[4px_4px_0_#0f172a]">
+              <span className="block text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 mb-1">
+                Public Cible
+              </span>
+              <span className="font-head text-lg font-bold uppercase text-slate-900 leading-tight block">
+                {course.targetAudience}
               </span>
             </div>
-            <div className="flex items-center gap-3 text-sm text-slate-700">
-              <Clock className="w-4 h-4 text-brand-600 shrink-0" />
-              <span>
-                <strong>Format :</strong> {course.duration}
+
+            <div className="border-2 border-slate-900 bg-white p-4 shadow-[4px_4px_0_#004b88]">
+              <span className="block text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 mb-1">
+                Rythme & Format
+              </span>
+              <span className="font-head text-lg font-bold uppercase text-brand-600 leading-tight block">
+                {course.duration}
               </span>
             </div>
-            <div className="flex items-center gap-3 text-sm text-slate-700">
-              <Award className="w-4 h-4 text-brand-600 shrink-0" />
-              <span>
-                <strong>Validation :</strong> Certificat IMC
+
+            <div className="border-2 border-slate-900 bg-white p-4 shadow-[4px_4px_0_#0f172a]">
+              <span className="block text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 mb-1">
+                Accréditation
+              </span>
+              <span className="font-head text-lg font-bold uppercase text-slate-900 leading-tight block">
+                Certificat d'Excellence IMC
               </span>
             </div>
           </div>
@@ -140,50 +132,50 @@ export default async function CourseDetailPage({
           {/* Objectifs & Modules (8 colonnes) */}
           <div className="lg:col-span-8 space-y-12">
             <div>
-              <div className="border-b border-slate-200 pb-3 mb-6">
-                <h2 className="text-xs font-bold uppercase tracking-widest text-slate-500">
-                  Objectifs de la Formation
-                </h2>
+              <h2 className="font-head text-2xl sm:text-3xl font-bold uppercase text-slate-900 tracking-tight mb-6">
+                Objectifs Opérationnels de la Formation
+              </h2>
+              <div className="border-2 border-slate-900 bg-white p-6 shadow-[5px_5px_0_#0f172a]">
+                <ul className="space-y-4">
+                  {course.objectives.map((obj, i) => (
+                    <li key={i} className="flex items-start gap-3 text-sm text-slate-800">
+                      <span className="w-5 h-5 bg-brand-600 text-white font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                        {i + 1}
+                      </span>
+                      <span className="leading-relaxed font-medium">{obj}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-3.5">
-                {course.objectives.map((obj, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-slate-700">
-                    <CheckCircle2 className="w-4 h-4 text-brand-600 shrink-0 mt-0.5" />
-                    <span className="leading-relaxed">{obj}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
 
             <div>
-              <div className="border-b border-slate-200 pb-3 mb-6">
-                <h2 className="text-xs font-bold uppercase tracking-widest text-slate-500">
-                  Modules & Programme Pédagogique
-                </h2>
-              </div>
+              <h2 className="font-head text-2xl sm:text-3xl font-bold uppercase text-slate-900 tracking-tight mb-6">
+                Structure des Modules Pédagogiques
+              </h2>
 
-              <div className="border border-slate-200">
-                <div className="bg-slate-100 px-5 py-3 border-b border-slate-200 flex items-center justify-between">
-                  <h3 className="text-xs font-bold uppercase tracking-wide text-slate-800">
-                    Structure des enseignements
+              <div className="border-2 border-slate-900 shadow-[5px_5px_0_#004b88]">
+                <div className="bg-slate-900 px-6 py-4 flex items-center justify-between text-white">
+                  <h3 className="font-head text-base font-bold uppercase tracking-wider">
+                    Programme d'Enseignement
                   </h3>
-                  <span className="text-xs text-slate-500">
-                    {course.modules.length} modules
+                  <span className="text-xs font-mono font-bold text-slate-300">
+                    {course.modules.length} Modules Certifiants
                   </span>
                 </div>
-                <div className="divide-y divide-slate-200">
+                <div className="divide-y-2 divide-slate-200 bg-white">
                   {course.modules.map((m, idx) => (
                     <div
                       key={idx}
-                      className="px-5 py-4 flex items-center justify-between gap-4 hover:bg-slate-50/60 transition-colors"
+                      className="px-6 py-4 flex items-center justify-between gap-4 hover:bg-slate-50 transition-colors"
                     >
-                      <div className="flex items-center gap-3">
-                        <span className="text-xs font-mono font-bold text-slate-400 w-6">
-                          {String(idx + 1).padStart(2, "0")}
+                      <div className="flex items-center gap-4">
+                        <span className="font-head text-lg font-bold text-brand-600 w-8 shrink-0">
+                          M{String(idx + 1).padStart(2, "0")}
                         </span>
-                        <span className="text-sm font-medium text-slate-800">{m}</span>
+                        <span className="text-sm sm:text-base font-semibold text-slate-900">{m}</span>
                       </div>
-                      <span className="text-xs font-semibold text-brand-600 shrink-0">
+                      <span className="text-xs font-mono font-bold uppercase tracking-wider px-2 py-1 bg-brand-50 text-brand-700 border border-brand-200 shrink-0">
                         Inclus
                       </span>
                     </div>
@@ -193,95 +185,97 @@ export default async function CourseDetailPage({
             </div>
 
             {/* Note pédagogique */}
-            <div className="border border-slate-200 p-6 bg-slate-50">
-              <h3 className="text-sm font-bold text-slate-900 mb-2">
-                Approche Pédagogique Axée sur la Pratique
+            <div className="border-2 border-slate-900 p-6 sm:p-8 bg-[#f0f7fc] shadow-[6px_6px_0_#004b88]">
+              <span className="inline-block px-2.5 py-1 text-xs font-mono font-bold uppercase tracking-wider bg-brand-600 text-white mb-3">
+                Méthode Pratique
+              </span>
+              <h3 className="font-head text-xl sm:text-2xl font-bold uppercase text-slate-900 mb-2">
+                Approche Pédagogique Orientée Marché
               </h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Chaque session intègre des études de cas réels, des ateliers interactifs et des mises en
-                situation concrètes issues du marché économique algérien. La formation est animée par des
-                experts praticiens et consultants chevronnés.
+              <p className="text-sm text-slate-700 leading-relaxed font-medium">
+                Chaque module alterne apports méthodologiques, études de cas réels d'entreprises algériennes et internationales, et simulations opérationnelles animées par des professionnels en activité.
               </p>
             </div>
           </div>
 
           {/* Formulaire de demande d'inscription / contact (4 colonnes) */}
           <div className="lg:col-span-4">
-            <div className="border border-slate-200 p-6 bg-slate-50 sticky top-28">
-              <div className="border-l-[3px] border-brand-600 pl-3 mb-4">
-                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-900">
-                  S'inscrire à cette Formation
-                </h3>
-              </div>
+            <div className="border-2 border-slate-900 p-6 sm:p-8 bg-white shadow-[8px_8px_0_#004b88] sticky top-36">
+              <span className="inline-block px-2.5 py-1 text-xs font-mono font-bold uppercase tracking-wider bg-slate-900 text-white mb-3">
+                Candidature & Devis
+              </span>
+              <h3 className="font-head text-2xl font-bold uppercase text-slate-900 mb-2 leading-tight">
+                S'inscrire à cette session
+              </h3>
               <p className="text-xs text-slate-600 mb-6 leading-relaxed">
-                Remplissez vos coordonnées pour recevoir le plan de cours détaillé et les prochaines dates de sessions.
+                Remplissez vos coordonnées pour recevoir le syllabus complet et les dates de la prochaine rentrée.
               </p>
 
               <form className="space-y-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 uppercase mb-1">
+                  <label className="block font-head text-xs font-bold uppercase tracking-wider text-slate-900 mb-1">
                     Nom et Prénom *
                   </label>
                   <input
                     type="text"
                     required
                     placeholder="Votre nom complet"
-                    className="w-full bg-white border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-brand-600"
+                    className="w-full bg-white border-2 border-slate-900 px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-brand-600"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 uppercase mb-1">
-                    Profil *
+                  <label className="block font-head text-xs font-bold uppercase tracking-wider text-slate-900 mb-1">
+                    Votre Profil *
                   </label>
                   <select
                     required
-                    className="w-full bg-white border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-brand-600"
+                    className="w-full bg-white border-2 border-slate-900 px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-brand-600"
                   >
-                    <option value="etudiant">Étudiant</option>
                     <option value="cadre">Cadre / Professionnel en activité</option>
-                    <option value="entreprise">Entreprise (Inscription groupe)</option>
+                    <option value="etudiant">Étudiant / Diplômé universitaire</option>
+                    <option value="entreprise">Entreprise (Convention groupe)</option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 uppercase mb-1">
+                  <label className="block font-head text-xs font-bold uppercase tracking-wider text-slate-900 mb-1">
                     Email Professionnel / Personnel *
                   </label>
                   <input
                     type="email"
                     required
                     placeholder="exemple@domaine.com"
-                    className="w-full bg-white border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-brand-600"
+                    className="w-full bg-white border-2 border-slate-900 px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-brand-600"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 uppercase mb-1">
+                  <label className="block font-head text-xs font-bold uppercase tracking-wider text-slate-900 mb-1">
                     Numéro de Téléphone *
                   </label>
                   <input
                     type="tel"
                     required
                     placeholder="05XX XX XX XX"
-                    className="w-full bg-white border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-brand-600"
+                    className="w-full bg-white border-2 border-slate-900 px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-brand-600"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs uppercase tracking-wider py-3.5 transition-colors"
+                  className="w-full bg-brand-600 hover:bg-brand-500 text-white font-head font-bold text-sm uppercase tracking-wider py-4 border-2 border-slate-900 shadow-[4px_4px_0_#0f172a] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_#0f172a] transition-all mt-2"
                 >
-                  Envoyer la demande
+                  Envoyer ma candidature &rarr;
                 </button>
               </form>
 
-              <div className="mt-6 pt-6 border-t border-slate-200">
+              <div className="mt-6 pt-6 border-t-2 border-slate-200">
                 <Link
                   href="/formations"
-                  className="text-xs text-brand-600 hover:text-brand-700 font-bold uppercase tracking-wider flex items-center gap-1.5"
+                  className="section-link group text-xs sm:text-sm"
                 >
-                  &larr; Retour aux 44 formations
+                  <span>&larr; Retour au catalogue</span>
                 </Link>
               </div>
             </div>

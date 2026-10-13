@@ -29,7 +29,11 @@ yarn-error.log*
 # System files
 .DS_Store
 Thumbs.db
+tsconfig.tsbuildinfo
 
-# Tools
-/tools/
+# Raw source pictures (stored compressed as WebP in public/pictures)
+/pictures/
+
+# Submodules & third-party skills
+/tools/pixel2motion/
 

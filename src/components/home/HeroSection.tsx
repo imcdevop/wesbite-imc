@@ -1,20 +1,22 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { FLAGSHIP_PICTURES } from "@/data/pictures";
 
 export function HeroSection() {
   return (
-    <section className="relative w-full h-screen min-h-[600px] max-h-[900px] flex items-center bg-slate-950 overflow-hidden -mt-[108px] pt-[108px]">
-      <Image
-        src="/hero-bg.jpg"
-        alt="Formation IMC Alger"
-        fill
-        priority
-        className="object-cover object-center"
-        sizes="100vw"
-      />
-
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/25" />
+    <section className="relative w-full min-h-[100dvh] h-[100dvh] flex items-center bg-slate-950 overflow-hidden -mt-[108px] pt-[108px]">
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        <Image
+          src={FLAGSHIP_PICTURES.heroCampus}
+          alt="Campus IMC Alger - Institut de Management et de Communication"
+          fill
+          priority
+          className="object-cover object-center w-full h-full"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30" />
+      </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">

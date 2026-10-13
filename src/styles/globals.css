@@ -27,6 +27,9 @@
   --shadow-hard-blue: 5px 5px 0 #004b88;
   --shadow-hard-dark: 5px 5px 0 #0f172a;
   --shadow-hard-light: 5px 5px 0 rgba(0, 75, 136, 0.2);
+
+  /* Hauteur de la barre de navigation IMC (barre utilitaire 36px + navbar 72px) */
+  --nav-h: 108px;
 }
 
 body {
@@ -206,6 +209,11 @@ html.lenis, html.lenis body {
 .rv-d6 { transition-delay: 0.48s; }
 .rv-d7 { transition-delay: 0.56s; }
 
+/* Classe utilitaire typographie condensed Web Rocket */
+.font-head {
+  font-family: var(--font-barlow), sans-serif;
+}
+
 /* Tag brutaliste Web Rocket */
 .tag-wr {
   display: inline-block;
@@ -219,6 +227,46 @@ html.lenis, html.lenis body {
   background-color: #ffffff;
   color: var(--color-text-primary);
   margin-bottom: 14px;
+}
+
+/* Lien de section IMC (soulignement bleu officiel IMC) */
+.section-link {
+  font-family: var(--font-barlow), sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #0f172a;
+  text-decoration: none;
+  border-bottom: 3px solid #004b88;
+  padding-bottom: 2px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease, padding 0.2s ease;
+}
+
+.section-link:hover {
+  background-color: #004b88;
+  color: #ffffff;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.section-link .arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.section-link:hover .arrow {
+  transform: translateX(5px);
+}
+
+@media (max-width: 640px) {
+  .section-link {
+    font-size: 0.95rem;
+  }
 }
 
 /* Effet hover focus & opacity fluide sur la grille de cartes */
@@ -236,7 +284,7 @@ html.lenis, html.lenis body {
 }
 
 /* ==========================================================
-   WEB ROCKET STYLE : CARTES EMPILÉES AU SCROLL (STACK-CARDS)
+   STYLE IMC : CARTES EMPILÉES AU SCROLL (CHARTE BLEUS IMC)
    ========================================================== */
 .cases-stack {
   display: flex;
@@ -259,33 +307,180 @@ html.lenis, html.lenis body {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Thème 1 : Blanc Épuré Brutaliste */
 .card-white {
   background: #ffffff;
   color: #0f172a;
+  border-color: #0f172a;
+  box-shadow: 10px 10px 0 rgba(15, 23, 42, 0.95);
 }
+.card-white p {
+  color: #475569;
+}
+.card-white .case-tags span {
+  border-color: #0f172a;
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+.card-white .case-link {
+  color: #0f172a;
+  border-bottom: 3px solid #004b88;
+}
+.card-white .browser-frame {
+  border-color: #0f172a;
+  box-shadow: 8px 8px 0 rgba(15, 23, 42, 0.85);
+}
+.card-white .browser-bar {
+  border-bottom: 2px solid #0f172a;
+  background: #f1f5f9;
+}
+.card-white .browser-bar i {
+  background: #0f172a;
+  opacity: 0.25;
+}
+.card-white .browser-bar i:first-child {
+  background: #004b88;
+  opacity: 1;
+}
+
+/* Thème 2 : Bleu Royal Officiel IMC (#004b88) */
+.card-blue {
+  background: #004b88;
+  color: #ffffff;
+  border-color: #00335c;
+  box-shadow: 10px 10px 0 rgba(15, 23, 42, 0.95);
+}
+.card-blue p {
+  color: #dbeafe;
+}
+.card-blue .case-tags span {
+  border-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+.card-blue .case-link {
+  color: #ffffff;
+  border-bottom: 3px solid #38bdf8;
+}
+.card-blue .case-link:hover {
+  border-bottom-color: #ffffff;
+}
+.card-blue .browser-frame {
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 8px 8px 0 rgba(0, 35, 64, 0.9);
+}
+.card-blue .browser-bar {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+  background: #003c6e;
+}
+.card-blue .browser-bar span {
+  color: #93c5fd !important;
+}
+.card-blue .browser-bar i {
+  background: #ffffff;
+  opacity: 0.35;
+}
+.card-blue .browser-bar i:first-child {
+  background: #38bdf8;
+  opacity: 1;
+}
+
+/* Thème 3 : Bleu Glacier Doux IMC (#f0f7fc) */
+.card-ice {
+  background: #f0f7fc;
+  color: #091322;
+  border-color: #004b88;
+  box-shadow: 10px 10px 0 #004b88;
+}
+.card-ice p {
+  color: #334155;
+}
+.card-ice .case-tags span {
+  border-color: #004b88;
+  background-color: #ffffff;
+  color: #004b88;
+}
+.card-ice .case-link {
+  color: #004b88;
+  border-bottom: 3px solid #004b88;
+}
+.card-ice .case-link:hover {
+  border-bottom-color: #0284c7;
+}
+.card-ice .browser-frame {
+  border-color: #004b88;
+  box-shadow: 8px 8px 0 rgba(0, 75, 136, 0.35);
+}
+.card-ice .browser-bar {
+  border-bottom: 2px solid #004b88;
+  background: #e0effe;
+}
+.card-ice .browser-bar span {
+  color: #0369a1 !important;
+}
+.card-ice .browser-bar i {
+  background: #004b88;
+  opacity: 0.3;
+}
+.card-ice .browser-bar i:first-child {
+  background: #004b88;
+  opacity: 1;
+}
+
+/* Thème 4 : Bleu Nuit Profond / Midnight Navy (#091322) */
+.card-navy {
+  background: #091322;
+  color: #ffffff;
+  border-color: #00629b;
+  box-shadow: 10px 10px 0 rgba(0, 75, 136, 0.75);
+}
+.card-navy p {
+  color: #94a3b8;
+}
+.card-navy .case-tags span {
+  border-color: #38bdf8;
+  background-color: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+}
+.card-navy .case-link {
+  color: #ffffff;
+  border-bottom: 3px solid #38bdf8;
+}
+.card-navy .case-link:hover {
+  border-bottom-color: #ffffff;
+}
+.card-navy .browser-frame {
+  border-color: #00629b;
+  box-shadow: 8px 8px 0 rgba(0, 98, 155, 0.9);
+}
+.card-navy .browser-bar {
+  border-bottom: 2px solid #00629b;
+  background: #111e30;
+}
+.card-navy .browser-bar span {
+  color: #7dd3fc !important;
+}
+.card-navy .browser-bar i {
+  background: #ffffff;
+  opacity: 0.3;
+}
+.card-navy .browser-bar i:first-child {
+  background: #38bdf8;
+  opacity: 1;
+}
+
+/* Aliases de compatibilité */
 .card-yellow {
-  background: #ffc700;
-  color: #111111;
+  background: #004b88;
+  color: #ffffff;
 }
 .card-gray {
-  background: #f4f6f9;
-  color: #0f172a;
+  background: #f0f7fc;
+  color: #091322;
 }
 .card-black {
   background: #091322;
   color: #ffffff;
-  border-color: #ffffff;
-  box-shadow: 10px 10px 0 rgba(0, 98, 155, 0.95);
-}
-
-.card-white p, .card-gray p {
-  color: #475569;
-}
-.card-yellow p {
-  color: #1a1a1a;
-}
-.card-black p {
-  color: #94a3b8;
 }
 
 .case-tags {
@@ -322,13 +517,6 @@ html.lenis, html.lenis body {
   transition: transform 0.15s ease, border-color 0.15s ease;
 }
 
-.card-yellow .case-link {
-  border-bottom-color: #0f172a;
-}
-.card-black .case-link {
-  border-bottom-color: #38bdf8;
-}
-
 .case-link:hover {
   transform: translateX(4px);
 }
@@ -350,11 +538,6 @@ html.lenis, html.lenis body {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.card-black .browser-frame {
-  border-color: #ffffff;
-  box-shadow: 10px 10px 0 rgba(0, 98, 155, 0.9);
-}
-
 .browser-bar {
   display: flex;
   align-items: center;
@@ -364,27 +547,12 @@ html.lenis, html.lenis body {
   background: #f1f5f9;
 }
 
-.card-black .browser-bar {
-  border-color: #ffffff;
-  background: #111e30;
-}
-
 .browser-bar i {
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background: #0f172a;
   opacity: 0.25;
-}
-
-.card-black .browser-bar i {
-  background: #ffffff;
-  opacity: 0.3;
-}
-
-.browser-bar i:first-child {
-  background: #ffc700;
-  opacity: 1;
 }
 
 .browser-frame img {
@@ -400,11 +568,48 @@ html.lenis, html.lenis body {
 }
 
 @media (max-width: 1024px) {
+  .cases-stack {
+    gap: 32px;
+  }
   .stack-card {
     grid-template-columns: 1fr;
-    padding: 32px 24px;
-    gap: 28px;
+    padding: 28px 24px;
+    gap: 20px;
     min-height: auto;
+    position: sticky; /* Animation de superposition au scroll activée sur petits écrans */
+  }
+}
+
+@media (max-width: 640px) {
+  .cases-stack {
+    gap: 24px;
+  }
+  .stack-card {
+    padding: 20px 16px;
+    gap: 16px;
+    box-shadow: 6px 6px 0 rgba(15, 23, 42, 0.95);
+  }
+  .stack-card .case-tags {
+    margin-bottom: 12px;
+    gap: 6px;
+  }
+  .stack-card .case-tags span {
+    font-size: 0.68rem;
+    padding: 2px 7px;
+  }
+  .stack-card h3 {
+    font-size: 1.55rem !important;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .stack-card p {
+    font-size: 0.82rem;
+    line-height: 1.45;
+    margin-bottom: 12px;
+  }
+  .stack-card .case-link {
+    font-size: 0.95rem;
+    margin-top: 14px;
   }
 }
 

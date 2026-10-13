@@ -1,116 +1,128 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ChevronRight, ShieldCheck, CheckCircle2, TrendingUp, Award, FileText } from "lucide-react";
+import { ShieldCheck, CheckCircle2, TrendingUp, Award, FileText } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Politique Qualité | IMC Alger",
+  title: "Politique Qualité & Agrément | IMC Alger",
   description:
-    "Engagement qualité, démarche d'amélioration continue et accréditation de l'IMC Alger.",
+    "Engagement qualité, démarche d'amélioration continue, agrément MESRS et référentiels d'excellence de l'Institut de Management et de Communication d'Alger.",
 };
 
 export default function PolitiqueQualitePage() {
   const qualityPillars = [
     {
       num: "01",
-      title: "Conformité Réglementaire et Pédagogique",
-      desc: "Respect strict des cahiers des charges et référentiels du Ministère de l'Enseignement Supérieur et de la Recherche Scientifique (MESRS).",
+      tag: "CONFORMITÉ MESRS",
+      title: "Conformité Réglementaire & Pédagogique",
+      desc: "Respect strict des référentiels pédagogiques et des exigences d'évaluation du Ministère de l'Enseignement Supérieur et de la Recherche Scientifique.",
+      shadow: "shadow-[6px_6px_0_#004b88]",
     },
     {
       num: "02",
-      title: "Évaluation Continue des Enseignements",
-      desc: "Dispositif systématique d'évaluation anonyme des cours par les apprenants et comités de suivi semestriels présidés par les responsables de filières.",
+      tag: "AUDIT PÉRIODIQUE",
+      title: "Évaluation Continue des Formations",
+      desc: "Dispositif systématique d'audit anonyme des modules par les apprenants et comités de suivi semestriels présidés par les responsables de filières.",
+      shadow: "shadow-[6px_6px_0_#0f172a]",
     },
     {
       num: "03",
+      tag: "ADÉQUATION MARCHÉ",
       title: "Adéquation Permanente Formation-Emploi",
-      desc: "Consultation régulière du Conseil d'Orientation et des employeurs partenaires pour actualiser les maquettes pédagogiques selon les évolutions du marché.",
+      desc: "Consultation régulière du Conseil d'Orientation et des employeurs partenaires pour actualiser les maquettes selon les besoins réels du marché économique.",
+      shadow: "shadow-[6px_6px_0_#004b88]",
     },
     {
       num: "04",
+      tag: "CORPS ENSEIGNANT",
       title: "Perfectionnement du Corps Professoral",
-      desc: "Formations pédagogiques régulières, accompagnement à la recherche appliquée et mutualisation des meilleures pratiques d'enseignement.",
+      desc: "Recrutement sélectif des intervenants (praticiens seniors et docteurs d'État), formations pédagogiques régulières et partage de cas d'études réels.",
+      shadow: "shadow-[6px_6px_0_#0f172a]",
     },
   ];
 
   return (
     <div className="w-full bg-white">
-      {/* Fil d'Ariane */}
-      <div className="border-b border-slate-200 bg-slate-50 py-3 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex items-center gap-2 text-xs text-slate-500">
-          <Link href="/" className="hover:text-slate-900 transition-colors">
-            Accueil
-          </Link>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <Link href="/a-propos" className="hover:text-slate-900 transition-colors">
-            L'Institut
-          </Link>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-slate-900 font-medium">Politique Qualité</span>
-        </div>
-      </div>
+      {/* En-tête éditorial */}
+      <section className="pt-16 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b-2 border-slate-900">
+        <h1 className="font-head text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 uppercase leading-[1.02] mb-4">
+          Politique Qualité
+        </h1>
+        <p className="text-base sm:text-lg text-slate-600 max-w-3xl leading-relaxed">
+          À l'IMC Alger, la qualité n'est pas un slogan : c'est un engagement contractuel envers nos étudiants, auditeurs et partenaires d'entreprise pour garantir une valeur académique et professionnelle irréprochable.
+        </p>
+      </section>
 
       {/* Contenu Principal */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="border-l-[3px] border-brand-600 pl-4 mb-4">
-          <span className="text-xs font-bold tracking-widest text-slate-500 uppercase">
-            Système de Management de la Qualité
-          </span>
-        </div>
-
-        <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 mb-6">
-          Politique Qualité & Amélioration Continue
-        </h1>
-
-        <p className="text-lg text-slate-600 max-w-3xl leading-relaxed mb-12">
-          À l'IMC Alger, la qualité n'est pas un simple processus administratif, c'est une culture
-          d'établissement partagée par l'ensemble des équipes pédagogiques, administratives et dirigeantes.
-        </p>
-
-        {/* 4 Piliers Qualite */}
+      <section className="py-12 lg:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        
+        {/* Les 4 Piliers Qualité */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {qualityPillars.map((pillar) => (
-            <div key={pillar.num} className="border border-slate-200 p-8 bg-slate-50 relative">
-              <span className="text-3xl font-display font-black text-brand-600/30 block mb-2">
-                {pillar.num}
-              </span>
-              <h2 className="font-display text-xl font-bold text-slate-900 mb-3">
-                {pillar.title}
-              </h2>
-              <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
-                {pillar.desc}
-              </p>
+          {qualityPillars.map((item) => (
+            <div
+              key={item.num}
+              className={`border-2 border-slate-900 p-6 sm:p-8 bg-white ${item.shadow} flex flex-col justify-between`}
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="inline-block px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-100 border border-slate-900 text-slate-900">
+                    {item.tag}
+                  </span>
+                  <span className="font-head text-3xl font-bold text-brand-600">
+                    {item.num}
+                  </span>
+                </div>
+                <h3 className="font-head text-2xl font-bold uppercase text-slate-900 mb-3 leading-snug">
+                  {item.title}
+                </h3>
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-medium">
+                  {item.desc}
+                </p>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Cadre de certification et audit */}
-        <div className="border border-slate-200 p-8 bg-white">
-          <div className="border-l-[3px] border-brand-600 pl-3 mb-4">
-            <h3 className="font-display text-xl font-bold text-slate-900">
-              Dispositif d'Audit et de Gouvernance Qualité
+        {/* Cadre d'Engagement MESRS */}
+        <div className="border-2 border-slate-900 bg-slate-900 text-white p-6 sm:p-10 shadow-[8px_8px_0_#004b88] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 mb-12">
+          <div>
+            <span className="inline-block px-2.5 py-1 text-xs font-mono font-bold uppercase tracking-wider bg-brand-500 text-white mb-3">
+              Normes & Agrément Officiel
+            </span>
+            <h3 className="font-head text-2xl sm:text-4xl font-bold uppercase text-white leading-tight mb-2">
+              Un Système Évalué selon les Exigences de l'Enseignement Supérieur
             </h3>
+            <p className="text-sm text-slate-300 max-w-3xl leading-relaxed">
+              Chaque promotion bénéficie d'un suivi académique personnalisé, d'attestations et de certificats sécurisés, vérifiables auprès de notre secrétariat général.
+            </p>
           </div>
-          <p className="text-slate-700 leading-relaxed max-w-4xl text-sm sm:text-base mb-6">
-            Une cellule interne dédiée à l'assurance qualité coordonne les audits pédagogiques, recueille
-            les indicateurs de performance (taux de réussite, délais d'insertion professionnelle, satisfaction des
-            entreprises d'accueil) et présente un rapport annuel au Conseil Scientifique.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 border-t border-slate-200 text-sm">
-            <div>
-              <span className="font-bold text-slate-900 block mb-1">100% Homologué</span>
-              <span className="text-slate-600">Diplômes agréés par le Ministère (MESRS).</span>
-            </div>
-            <div>
-              <span className="font-bold text-slate-900 block mb-1">Audit Semestriel</span>
-              <span className="text-slate-600">Évaluation systématique des maquettes de cours.</span>
-            </div>
-            <div>
-              <span className="font-bold text-slate-900 block mb-1">Écoute Apprenants</span>
-              <span className="text-slate-600">Comités paritaires délégués-enseignants.</span>
-            </div>
+          <div className="flex-shrink-0 w-full sm:w-auto">
+            <Link
+              href="/formations"
+              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-brand-600 hover:bg-brand-500 text-white font-head font-bold uppercase text-xs sm:text-sm tracking-wider px-6 py-4 border-2 border-white shadow-[4px_4px_0_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+            >
+              <span>Consulter les certifications</span>
+              <span>&rarr;</span>
+            </Link>
           </div>
         </div>
+
+        {/* Liens de bas de page */}
+        <div className="pt-6 border-t-2 border-slate-200 flex flex-wrap items-center justify-between gap-4">
+          <Link
+            href="/a-propos"
+            className="section-link group text-sm"
+          >
+            <span>&larr; Retour à la présentation de l'institut</span>
+          </Link>
+
+          <Link
+            href="/le-mot-du-directeur"
+            className="section-link group text-sm"
+          >
+            <span>Lire le Mot du Directeur Général &rarr;</span>
+          </Link>
+        </div>
+
       </section>
     </div>
   );

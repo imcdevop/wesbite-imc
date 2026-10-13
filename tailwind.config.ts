@@ -26,6 +26,8 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-bricolage)", "sans-serif"],
         sans: ["var(--font-inter)", "sans-serif"],
+        head: ["var(--font-barlow)", "sans-serif"],
+        barlow: ["var(--font-barlow)", "sans-serif"],
       },
     },
   },

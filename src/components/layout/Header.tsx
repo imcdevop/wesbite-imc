@@ -12,6 +12,25 @@ const NAV_ITEMS = [
   { key: "recherche", label: "Recherche" },
 ] as const;
 
+const FORMATION_DOMAINS = [
+  { id: "tech", name: "Tech & IA", count: 12, href: "/formations?domaine=tech" },
+  { id: "marketing", name: "Marketing & Communication", count: 9, href: "/formations?domaine=marketing" },
+  { id: "management", name: "Management & Stratégie", count: 7, href: "/formations?domaine=management" },
+  { id: "finance", name: "Finance, Audit & Comptabilité", count: 8, href: "/formations?domaine=finance" },
+  { id: "supply-chain", name: "Supply Chain & Logistique", count: 4, href: "/formations?domaine=supply-chain" },
+  { id: "rh", name: "Ressources Humaines", count: 2, href: "/formations?domaine=rh" },
+  { id: "droit", name: "Droit des Affaires", count: 1, href: "/formations?domaine=droit" },
+];
+
+const FORMATION_FLAGSHIPS = [
+  { href: "/formations/big-data-analytics", name: "Big Data & Business Intelligence", domain: "Tech" },
+  { href: "/formations/cybersecurite", name: "Cybersécurité des Systèmes", domain: "Tech" },
+  { href: "/formations/ia-pour-tous-appliquer", name: "Intelligence Artificielle Appliquée", domain: "Tech" },
+  { href: "/formations/management-de-projet", name: "Management de Projet & Méthodes Agiles", domain: "Management" },
+  { href: "/formations/introduction-supply-chain", name: "Pilotage de la Supply Chain", domain: "Logistique" },
+  { href: "/formations/droit-des-affaires-contrats", name: "Droit des Affaires & Pratique Contractuelle", domain: "Droit" },
+];
+
 type MenuKey = (typeof NAV_ITEMS)[number]["key"];
 
 export function Header() {
@@ -223,14 +242,14 @@ export function Header() {
                 </li>
               </ul>
 
-              <div className={`ml-8 pl-8 border-l ${isTransparent ? "border-white/20" : "border-slate-200"} h-8 flex items-center`}>
+              <div className={`ml-6 pl-6 border-l ${isTransparent ? "border-white/20" : "border-slate-200"} flex items-center`}>
                 <Link
                   href="/contact"
                   onClick={close}
-                  className={`text-[12px] font-semibold tracking-widest uppercase px-5 py-2 transition-colors ${
+                  className={`inline-flex items-center justify-center font-head font-bold uppercase tracking-wider text-xs px-5 py-2 transition-all ${
                     isTransparent
-                      ? "text-white border border-white/40 hover:bg-white hover:text-slate-900"
-                      : "text-white bg-brand-600 hover:bg-brand-700"
+                      ? "text-white bg-slate-900/60 backdrop-blur-sm border-2 border-white shadow-[3px_3px_0_#ffffff] hover:bg-white hover:text-slate-900 hover:shadow-[4px_4px_0_#004b88] hover:-translate-x-0.5 hover:-translate-y-0.5"
+                      : "text-white bg-brand-600 hover:bg-brand-500 border-2 border-slate-900 shadow-[3px_3px_0_#0f172a] hover:shadow-[4px_4px_0_#0f172a] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none"
                   }`}
                 >
                   Contact
@@ -270,85 +289,113 @@ export function Header() {
         {activeMenu === "imc" && (
           <div
             onMouseEnter={clearCloseTimer}
-            className="hidden lg:block absolute left-0 right-0 top-full bg-white border-t border-slate-100 z-50"
+            className="hidden lg:block absolute left-0 right-0 top-full bg-white border-b-2 border-slate-900 shadow-[0_12px_0_#004b88] z-50"
             style={{
-              boxShadow: "0 8px 24px -4px rgba(15, 23, 42, 0.06)",
-              animation: "menuReveal 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards",
+              animation: "menuReveal 180ms cubic-bezier(0.16, 1, 0.3, 1) forwards",
             }}
           >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-              <div className="grid grid-cols-12 gap-x-8">
-                <div className="col-span-4">
-                  <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-slate-400 mb-5 font-sans">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+              <div className="grid grid-cols-12 gap-x-8 items-start">
+                
+                {/* Colonne 1 : Présentation */}
+                <div className="col-span-3 border-r border-slate-100 pr-6">
+                  <span className="inline-block px-2.5 py-0.5 text-[11px] font-head font-bold tracking-widest uppercase text-slate-900 bg-slate-100 border border-slate-900 mb-4">
                     Présentation
-                  </p>
+                  </span>
                   <ul className="space-y-0">
-                    <li>
-                      <Link href="/a-propos" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">
-                        À Propos de l'IMC
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/le-mot-du-directeur" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">
-                        Le mot du directeur
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/vision-missions-et-valeurs" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">
-                        Vision, missions et valeurs
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/politique-qualite" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">
-                        Politique Qualité
-                      </Link>
-                    </li>
+                    {[
+                      { href: "/a-propos", label: "À Propos de l'IMC" },
+                      { href: "/le-mot-du-directeur", label: "Le mot du directeur" },
+                      { href: "/vision-missions-valeurs", label: "Vision, missions et valeurs" },
+                      { href: "/politique-qualite", label: "Politique Qualité" },
+                    ].map((item) => (
+                      <li key={item.href}>
+                        <Link
+                          href={item.href}
+                          onClick={close}
+                          className="group flex items-center justify-between py-2 text-[14px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors"
+                        >
+                          <span className="font-medium group-hover:translate-x-1 transition-transform">{item.label}</span>
+                          <span className="opacity-0 group-hover:opacity-100 text-brand-600 font-bold transition-opacity">&rarr;</span>
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
-                <div className="col-span-4">
-                  <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-slate-400 mb-5 font-sans">
+
+                {/* Colonne 2 : Gouvernance */}
+                <div className="col-span-3 border-r border-slate-100 pr-6">
+                  <span className="inline-block px-2.5 py-0.5 text-[11px] font-head font-bold tracking-widest uppercase text-slate-900 bg-slate-100 border border-slate-900 mb-4">
                     Gouvernance
-                  </p>
+                  </span>
                   <ul className="space-y-0">
-                    <li>
-                      <Link href="/le-conseil-scientifique" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">
-                        Le conseil scientifique
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/le-conseil-dorientation" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">
-                        Le conseil d'orientation
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/nos-partenaires-internationaux" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">
-                        Partenaires internationaux
-                      </Link>
-                    </li>
+                    {[
+                      { href: "/le-conseil-scientifique", label: "Le conseil scientifique" },
+                      { href: "/le-conseil-dorientation", label: "Le conseil d'orientation" },
+                      { href: "/nos-partenaires-internationaux", label: "Partenaires internationaux" },
+                    ].map((item) => (
+                      <li key={item.href}>
+                        <Link
+                          href={item.href}
+                          onClick={close}
+                          className="group flex items-center justify-between py-2 text-[14px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors"
+                        >
+                          <span className="font-medium group-hover:translate-x-1 transition-transform">{item.label}</span>
+                          <span className="opacity-0 group-hover:opacity-100 text-brand-600 font-bold transition-opacity">&rarr;</span>
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
-                <div className="col-span-4">
-                  <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-slate-400 mb-5 font-sans">
+
+                {/* Colonne 3 : Campus & Services */}
+                <div className="col-span-3 border-r border-slate-100 pr-6">
+                  <span className="inline-block px-2.5 py-0.5 text-[11px] font-head font-bold tracking-widest uppercase text-slate-900 bg-slate-100 border border-slate-900 mb-4">
                     Services
-                  </p>
+                  </span>
                   <ul className="space-y-0">
-                    <li>
-                      <Link href="/incubateur" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">
-                        Incubateur IMC-Start
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/bibliotheque" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">
-                        Bibliothèque
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/alumnis" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">
-                        Réseau Alumnis
-                      </Link>
-                    </li>
+                    {[
+                      { href: "/incubateur", label: "Incubateur IMC-Start" },
+                      { href: "/bibliotheque", label: "Bibliothèque" },
+                      { href: "/alumnis", label: "Réseau Alumnis" },
+                    ].map((item) => (
+                      <li key={item.href}>
+                        <Link
+                          href={item.href}
+                          onClick={close}
+                          className="group flex items-center justify-between py-2 text-[14px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors"
+                        >
+                          <span className="font-medium group-hover:translate-x-1 transition-transform">{item.label}</span>
+                          <span className="opacity-0 group-hover:opacity-100 text-brand-600 font-bold transition-opacity">&rarr;</span>
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
+
+                {/* Colonne 4 : Encart Institutionnel Élite */}
+                <div className="col-span-3">
+                  <div className="border-2 border-slate-900 bg-slate-50 p-5 shadow-[4px_4px_0_#004b88]">
+                    <span className="inline-block px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider bg-brand-600 text-white mb-2">
+                      Agrément MESRS
+                    </span>
+                    <h4 className="font-head text-base font-bold uppercase text-slate-900 leading-tight mb-1.5">
+                      Institut d'Excellence
+                    </h4>
+                    <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                      Établissement d'enseignement supérieur agréé, formant les futurs décideurs et cadres d'entreprise depuis plus de 15 ans.
+                    </p>
+                    <Link
+                      href="/a-propos"
+                      onClick={close}
+                      className="inline-flex items-center gap-1.5 text-xs font-head font-bold uppercase tracking-wider text-brand-600 hover:text-brand-700"
+                    >
+                      <span>Découvrir l'IMC</span>
+                      <span>&rarr;</span>
+                    </Link>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
@@ -357,130 +404,119 @@ export function Header() {
         {activeMenu === "formations" && (
           <div
             onMouseEnter={clearCloseTimer}
-            className="hidden lg:block absolute left-0 right-0 top-full bg-white border-t border-slate-100 border-b-2 border-brand-600 z-50 shadow-xl"
+            className="hidden lg:block absolute left-0 right-0 top-full bg-white border-b-2 border-slate-900 shadow-[0_12px_0_#004b88] z-50"
             style={{
-              boxShadow: "0 12px 28px -4px rgba(15, 23, 42, 0.08)",
-              animation: "menuReveal 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards",
+              animation: "menuReveal 180ms cubic-bezier(0.16, 1, 0.3, 1) forwards",
             }}
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-              <div className="grid grid-cols-12 gap-x-8">
-                {/* Colonne 1 : TOUS LES 7 DOMAINES DANS UNE COLONNE SEPAREE */}
-                <div className="col-span-3 border-r border-slate-200 pr-6">
-                  <div className="flex items-center justify-between mb-3 pb-2 border-b border-slate-200">
-                    <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-brand-600 font-sans">
-                      Les 7 Domaines
-                    </p>
-                    <span className="text-[10px] font-mono font-bold text-slate-400 uppercase">
-                      Spécialités
-                    </span>
-                  </div>
-                  <ul className="space-y-1">
-                    {[
-                      { id: "tech", name: "Tech", count: 12 },
-                      { id: "marketing", name: "Marketing", count: 9 },
-                      { id: "management", name: "Management", count: 7 },
-                      { id: "finance", name: "Finance", count: 8 },
-                      { id: "supply-chain", name: "Supply Chain", count: 4 },
-                      { id: "rh", name: "Ressources Humaines", count: 2 },
-                      { id: "droit", name: "Droit des Affaires", count: 1 },
-                    ].map((dom) => (
-                      <li key={dom.id}>
+              <div className="grid grid-cols-12 gap-x-8 items-start">
+                
+                {/* Colonne 1 (col-span-4) : Domaines d'Enseignement */}
+                <div className="col-span-4 border-r border-slate-100 pr-8">
+                  <span className="inline-block px-2.5 py-0.5 text-[11px] font-head font-bold tracking-widest uppercase text-slate-900 bg-slate-100 border border-slate-900 mb-4">
+                    7 Domaines de Formation
+                  </span>
+                  <ul className="space-y-0">
+                    {FORMATION_DOMAINS.map((domain) => (
+                      <li key={domain.id}>
                         <Link
-                          href={`/formations?domaine=${dom.id}`}
+                          href={domain.href}
                           onClick={close}
-                          className="flex items-center justify-between py-1.5 px-2 -mx-2 text-[13px] font-semibold text-slate-800 hover:text-brand-600 hover:bg-slate-50 transition-colors group"
+                          className="flex items-center justify-between py-2 text-[14px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors group"
                         >
-                          <span className="group-hover:translate-x-1 transition-transform">{dom.name}</span>
-                          <span className="text-[11px] font-mono font-bold px-1.5 py-0.5 border border-slate-200 bg-white text-slate-500 group-hover:border-brand-600 group-hover:text-brand-600">
-                            {dom.count}
+                          <span className="font-medium group-hover:translate-x-1 transition-transform">
+                            {domain.name}
+                          </span>
+                          <span className="text-xs font-mono font-bold text-slate-400 group-hover:text-brand-600">
+                            {domain.count}
                           </span>
                         </Link>
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-3 pt-3 border-t border-slate-200">
+                  <div className="mt-4 pt-1">
                     <Link
                       href="/formations"
                       onClick={close}
-                      className="text-[11px] font-bold uppercase tracking-wider text-brand-600 hover:text-brand-700 flex items-center justify-between"
-                    >
-                      <span>Tous les domaines</span>
-                      <span>44 &rarr;</span>
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Colonne 2 : FORMATIONS PHARES SELECTIONNEES (Espace Optimisé) */}
-                <div className="col-span-5 border-r border-slate-200 pr-6">
-                  <div className="flex items-center justify-between mb-3 pb-2 border-b border-slate-200">
-                    <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-slate-500 font-sans">
-                      Formations Phares
-                    </p>
-                    <span className="text-[10px] font-mono font-bold text-slate-400 uppercase">
-                      Plus demandées
-                    </span>
-                  </div>
-                  <div className="grid grid-cols-2 gap-x-5 gap-y-2">
-                    {[
-                      { href: "/formations/big-data-analytics", label: "Big Data & Analytics", sub: "Tech" },
-                      { href: "/formations/cybersecurite", label: "Cybersécurité & Réseaux", sub: "Tech" },
-                      { href: "/formations/ia-pour-tous-appliquer", label: "Intelligence Artificielle", sub: "Tech" },
-                      { href: "/formations/developpement-web-mobile", label: "Dév Web & Mobile", sub: "Tech" },
-                      { href: "/formations/marketing-digital", label: "Marketing Digital", sub: "Marketing" },
-                      { href: "/formations/management-de-projet", label: "Management de Projet", sub: "Management" },
-                      { href: "/formations/audit-controle-gestion", label: "Audit & Contrôle", sub: "Finance" },
-                      { href: "/formations/introduction-supply-chain", label: "Supply Chain", sub: "Supply Chain" },
-                    ].map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        onClick={close}
-                        className="py-1.5 px-2 -mx-2 hover:bg-slate-50 border-b border-slate-100 transition-colors block group"
-                      >
-                        <p className="text-[13px] font-semibold text-slate-900 group-hover:text-brand-600 transition-colors truncate">
-                          {item.label}
-                        </p>
-                        <p className="text-[11px] text-slate-400">
-                          {item.sub}
-                        </p>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Colonne 3 : CATALOGUE OFFICIEL & ACCES DIRECT */}
-                <div className="col-span-4 flex flex-col justify-between">
-                  <div className="border-2 border-slate-900 bg-white p-5 shadow-[4px_4px_0_#004b88]">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-brand-700 bg-brand-50 px-2 py-0.5 border border-brand-200">
-                        Catalogue 2026
-                      </span>
-                      <span className="text-[11px] font-mono font-bold text-slate-900">44 Programmes</span>
-                    </div>
-                    <p className="text-[14px] font-bold text-slate-900 leading-snug mb-1">
-                      7 Domaines Spécialisés
-                    </p>
-                    <p className="text-[12px] text-slate-600 leading-relaxed mb-4">
-                      Formations professionnelles certifiantes conçues pour les étudiants et les cadres en entreprise.
-                    </p>
-                    <Link
-                      href="/formations"
-                      onClick={close}
-                      className="btn-imc-primary w-full py-2.5 px-3 text-[11px] text-center"
+                      className="section-link group text-xs sm:text-sm"
                     >
                       <span>Consulter les 44 formations</span>
-                      <span>&rarr;</span>
-                    </Link>
-                  </div>
-
-                  <div className="mt-3 pt-3 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
-                    <span>Sessions toute l'année</span>
-                    <Link href="/contact" onClick={close} className="font-semibold text-brand-600 hover:underline">
-                      Demander un devis &rarr;
+                      <span className="arrow ml-1 inline-block">&rarr;</span>
                     </Link>
                   </div>
                 </div>
+
+                {/* Colonne 2 (col-span-4) : Programmes Phares */}
+                <div className="col-span-4 border-r border-slate-100 pr-8">
+                  <span className="inline-block px-2.5 py-0.5 text-[11px] font-head font-bold tracking-widest uppercase text-slate-900 bg-slate-100 border border-slate-900 mb-4">
+                    Programmes Phares 2026
+                  </span>
+                  <ul className="space-y-0">
+                    {FORMATION_FLAGSHIPS.map((item, idx) => (
+                      <li key={idx}>
+                        <Link
+                          href={item.href}
+                          onClick={close}
+                          className="flex items-center justify-between py-2.5 text-[14px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors group"
+                        >
+                          <span className="group-hover:translate-x-1 transition-transform font-medium">
+                            {item.name}
+                          </span>
+                          <span className="text-[11px] font-mono font-semibold text-slate-400">
+                            {item.domain}
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Colonne 3 (col-span-4) : Solutions Entreprises & Accès Catalogue */}
+                <div className="col-span-4 flex flex-col justify-between">
+                  <div>
+                    <span className="inline-block px-2.5 py-0.5 text-[11px] font-head font-bold tracking-widest uppercase text-slate-900 bg-slate-100 border border-slate-900 mb-4">
+                      Entreprises & Certifications
+                    </span>
+                    
+                    <div className="border-2 border-slate-900 bg-slate-50 p-4 shadow-[4px_4px_0_#0f172a] mb-4">
+                      <h4 className="font-head text-sm font-bold uppercase tracking-wider text-slate-900 mb-1">
+                        Formations sur-mesure
+                      </h4>
+                      <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                        Programmes intra et inter-entreprises conçus pour les cadres et équipes dirigeantes en Algérie.
+                      </p>
+                      <Link
+                        href="/contact"
+                        onClick={close}
+                        className="text-xs font-head font-bold uppercase tracking-wider text-brand-600 hover:text-brand-700 inline-flex items-center gap-1"
+                      >
+                        <span>Demander une convention</span>
+                        <span>&rarr;</span>
+                      </Link>
+                    </div>
+
+                    <div className="border-2 border-slate-900 bg-white p-4">
+                      <h4 className="font-head text-sm font-bold uppercase tracking-wider text-slate-900 mb-1">
+                        Agrément Officiel MESRS
+                      </h4>
+                      <p className="text-xs text-slate-600 leading-relaxed">
+                        Établissement agréé par le Ministère de l'Enseignement Supérieur. Diplômes et attestations officiellement reconnus.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-5 pt-3">
+                    <Link
+                      href="/formations"
+                      onClick={close}
+                      className="block w-full py-3 text-center bg-brand-600 hover:bg-brand-500 text-white font-head font-bold uppercase text-xs tracking-wider border-2 border-slate-900 shadow-[3px_3px_0_#0f172a] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+                    >
+                      Catalogue complet (44 formations) &rarr;
+                    </Link>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
@@ -489,24 +525,97 @@ export function Header() {
         {activeMenu === "recherche" && (
           <div
             onMouseEnter={clearCloseTimer}
-            className="hidden lg:block absolute left-0 right-0 top-full bg-white border-t border-slate-100 z-50"
+            className="hidden lg:block absolute left-0 right-0 top-full bg-white border-b-2 border-slate-900 shadow-[0_12px_0_#004b88] z-50"
             style={{
-              boxShadow: "0 8px 24px -4px rgba(15, 23, 42, 0.06)",
-              animation: "menuReveal 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards",
+              animation: "menuReveal 180ms cubic-bezier(0.16, 1, 0.3, 1) forwards",
             }}
           >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-              <div className="grid grid-cols-12 gap-x-8">
-                <div className="col-span-4">
-                  <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-slate-400 mb-5">
-                    Activites scientifiques
-                  </p>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+              <div className="grid grid-cols-12 gap-x-8 items-start">
+                
+                {/* Colonne 1 : Activités Scientifiques */}
+                <div className="col-span-4 border-r border-slate-100 pr-8">
+                  <span className="inline-block px-2.5 py-0.5 text-[11px] font-head font-bold tracking-widest uppercase text-slate-900 bg-slate-100 border border-slate-900 mb-4">
+                    Activités Scientifiques
+                  </span>
                   <ul className="space-y-0">
-                    <li><Link href="/recherche/colloques" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">Colloques</Link></li>
-                    <li><Link href="/recherche/ateliers" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 border-b border-slate-100 transition-colors">Ateliers</Link></li>
-                    <li><Link href="/recherche/revue" onClick={close} className="block py-2.5 text-[15px] text-slate-800 hover:text-brand-600 transition-colors">Revue</Link></li>
+                    {[
+                      { href: "/recherche/colloques", label: "Colloques Internationaux", desc: "Rencontres de chercheurs maghrébins et internationaux" },
+                      { href: "/recherche/ateliers", label: "Ateliers & Workshops", desc: "Séminaires méthodologiques et pratiques de recherche" },
+                      { href: "/recherche/revue", label: "Revue de Management", desc: "Publications scientifiques et études de cas sectorielles" },
+                    ].map((item) => (
+                      <li key={item.href}>
+                        <Link
+                          href={item.href}
+                          onClick={close}
+                          className="group block py-2.5 border-b border-slate-100 hover:border-brand-600 transition-colors"
+                        >
+                          <div className="flex items-center justify-between">
+                            <span className="font-head text-base font-bold uppercase text-slate-900 group-hover:text-brand-600 group-hover:translate-x-1 transition-all">
+                              {item.label}
+                            </span>
+                            <span className="text-slate-400 group-hover:text-brand-600 font-bold">&rarr;</span>
+                          </div>
+                          <p className="text-xs text-slate-500 mt-0.5">{item.desc}</p>
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
+
+                {/* Colonne 2 : Innovation & Valorisation */}
+                <div className="col-span-4 border-r border-slate-100 pr-8">
+                  <span className="inline-block px-2.5 py-0.5 text-[11px] font-head font-bold tracking-widest uppercase text-slate-900 bg-slate-100 border border-slate-900 mb-4">
+                    Innovation & Valorisation
+                  </span>
+                  <ul className="space-y-0">
+                    {[
+                      { href: "/incubateur", label: "Incubateur IMC-Start", desc: "Accompagnement de projets entrepreneuriaux innovants" },
+                      { href: "/bibliotheque", label: "Bibliothèque & Ressources", desc: "Ouvrages spécialisés, revues et bases de données académiques" },
+                      { href: "/recherche", label: "Pôle Recherche Général", desc: "Présentation des axes et orientations scientifiques" },
+                    ].map((item) => (
+                      <li key={item.href}>
+                        <Link
+                          href={item.href}
+                          onClick={close}
+                          className="group block py-2.5 border-b border-slate-100 hover:border-brand-600 transition-colors"
+                        >
+                          <div className="flex items-center justify-between">
+                            <span className="font-head text-base font-bold uppercase text-slate-900 group-hover:text-brand-600 group-hover:translate-x-1 transition-all">
+                              {item.label}
+                            </span>
+                            <span className="text-slate-400 group-hover:text-brand-600 font-bold">&rarr;</span>
+                          </div>
+                          <p className="text-xs text-slate-500 mt-0.5">{item.desc}</p>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Colonne 3 : Focus Événementiel Phare */}
+                <div className="col-span-4">
+                  <div className="border-2 border-slate-900 bg-slate-50 p-5 shadow-[4px_4px_0_#004b88]">
+                    <span className="inline-block px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider bg-brand-600 text-white mb-2">
+                      Colloque 2026
+                    </span>
+                    <h4 className="font-head text-lg font-bold uppercase text-slate-900 leading-snug mb-2">
+                      Gouvernance & Transformation Numérique
+                    </h4>
+                    <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                      Appel à communication ouvert pour les chercheurs et praticiens. 14 & 15 Novembre 2026 à Alger.
+                    </p>
+                    <Link
+                      href="/recherche/colloques"
+                      onClick={close}
+                      className="inline-flex items-center gap-2 bg-slate-900 hover:bg-brand-600 text-white font-head font-bold uppercase text-xs tracking-wider px-4 py-2.5 transition-colors"
+                    >
+                      <span>Programme & Soumission</span>
+                      <span>&rarr;</span>
+                    </Link>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
@@ -608,8 +717,12 @@ export function Header() {
             </div>
 
             <div className="pt-4">
-              <Link href="/contact" onClick={close} className="block text-center bg-brand-600 text-white py-3.5 text-[12px] font-semibold tracking-widest uppercase transition-colors hover:bg-brand-700">
-                Contactez-nous
+              <Link
+                href="/contact"
+                onClick={close}
+                className="block text-center bg-brand-600 hover:bg-brand-500 text-white font-head font-bold uppercase text-xs tracking-wider py-3.5 border-2 border-slate-900 shadow-[3px_3px_0_#0f172a] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+              >
+                Contact
               </Link>
             </div>
           </div>

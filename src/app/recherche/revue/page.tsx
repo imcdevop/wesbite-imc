@@ -1,107 +1,196 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ChevronRight, BookOpen, Download, FileText, CheckCircle2 } from "lucide-react";
+import { BookOpen, Download, FileText, CheckCircle2, ArrowRight, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Revue de Management & Pratiques Managériales | IMC Alger",
   description:
-    "Revue scientifique de l'Institut de Management et de Communication d'Alger, articles de recherche et études de cas.",
+    "Revue scientifique à comité de lecture de l'Institut de Management et de Communication d'Alger : articles de recherche, études empiriques et cas d'entreprises.",
 };
 
 export default function RevuePage() {
   const issues = [
     {
-      num: "Numéro 12 - Vol. 2",
+      num: "Volume 12 &ndash; Numéro 2",
+      badge: "DERNIÈRE PARUTION",
       title: "Stratégies d'Internationalisation et Supply Chain Résiliente au Maghreb",
       date: "Automne 2026",
+      shadow: "shadow-[8px_8px_0_#004b88]",
       articles: [
-        "Impact de la dématérialisation sur la performance logistique en Algérie",
-        "Gouvernance d'entreprise et conformité IFRS dans le secteur financier",
-        "L'adoption de l'IA générative dans les PME algériennes : opportunités et freins",
+        {
+          titre: "Impact de la dématérialisation sur la performance logistique et douanière en Algérie",
+          auteur: "Dr. K. Mansouri & Pr. R. Benali",
+          pages: "pp. 14-38",
+        },
+        {
+          titre: "Gouvernance d'entreprise et conformité aux normes IFRS dans le secteur bancaire algérien",
+          auteur: "Dr. S. Khelifi & Coll.",
+          pages: "pp. 39-65",
+        },
+        {
+          titre: "L'adoption de l'IA générative dans les PME algériennes : opportunités et freins organisationnels",
+          auteur: "Équipe de Recherche IMC-Lab",
+          pages: "pp. 66-92",
+        },
       ],
     },
     {
-      num: "Numéro 11 - Vol. 1",
+      num: "Volume 11 &ndash; Numéro 1",
+      badge: "ARCHIVE DISPONIBLE",
       title: "Transformation Managériale et Capital Humain à l'Ère Digitale",
       date: "Printemps 2026",
+      shadow: "shadow-[8px_8px_0_#0f172a]",
       articles: [
-        "Fidélisation des talents et nouvelles attentes des diplômés de l'enseignement supérieur",
-        "Audit des systèmes d'information : cadre d'analyse pour les banques de la place",
-        "Marketing digital et commerce électronique en Algérie : panorama et perspectives",
+        {
+          titre: "Fidélisation des talents et nouvelles attentes des diplômés de l'enseignement supérieur",
+          auteur: "Pr. J.-M. Dumont",
+          pages: "pp. 11-32",
+        },
+        {
+          titre: "Audit des systèmes d'information : cadre d'analyse pratique pour les banques de la place",
+          auteur: "Dr. A. Cherif",
+          pages: "pp. 33-58",
+        },
+        {
+          titre: "Marketing digital et commerce électronique en Algérie : panorama économique et perspectives",
+          auteur: "Dr. M. Zerrouki",
+          pages: "pp. 59-84",
+        },
       ],
     },
   ];
 
   return (
     <div className="w-full bg-white">
-      {/* Fil d'Ariane */}
-      <div className="border-b border-slate-200 bg-slate-50 py-3 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex items-center gap-2 text-xs text-slate-500">
-          <Link href="/" className="hover:text-slate-900 transition-colors">
-            Accueil
-          </Link>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <Link href="/recherche" className="hover:text-slate-900 transition-colors">
-            Recherche
-          </Link>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-slate-900 font-medium">Revue</span>
-        </div>
-      </div>
-
-      {/* Contenu Principal */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="border-l-[3px] border-brand-600 pl-4 mb-4">
-          <span className="text-xs font-bold tracking-widest text-slate-500 uppercase">
-            Publication Scientifique Périodique
-          </span>
-        </div>
-
-        <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 mb-6">
+      {/* En-tête éditorial */}
+      <section className="pt-16 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b-2 border-slate-900">
+        <h1 className="font-head text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 uppercase leading-[1.02] mb-4">
           Revue de Management de l'IMC
         </h1>
-
-        <p className="text-lg text-slate-600 max-w-3xl leading-relaxed mb-12">
-          La Revue de Management de l'IMC est un espace de diffusion intellectuelle à comité de lecture
-          dédié aux analyses théoriques et appliquées sur les dynamiques économiques et managériales régionales.
+        <p className="text-base sm:text-lg text-slate-600 max-w-3xl leading-relaxed">
+          Espace de diffusion académique à comité de lecture international en double aveugle (double-blind peer review), la Revue de Management de l'IMC publie des contributions scientifiques rigoureuses sur les mutations économiques, financières et digitales en Algérie et dans le bassin méditerranéen.
         </p>
+      </section>
+
+      {/* Contenu Principal */}
+      <section className="py-12 lg:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="mb-12">
+          <h2 className="font-head text-3xl sm:text-4xl lg:text-5xl font-bold uppercase text-slate-900 tracking-tight leading-tight">
+            Dernières Parutions Indexées
+          </h2>
+        </div>
 
         {/* Derniers Numéros */}
-        <div className="space-y-8 mb-16">
-          {issues.map((iss) => (
-            <div key={iss.num} className="border border-slate-200 p-8 bg-slate-50 hover:border-brand-600 transition-colors">
-              <div className="flex justify-between items-start flex-wrap gap-2 mb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-brand-600">
-                  {iss.num}
+        <div className="space-y-12 mb-16">
+          {issues.map((iss, idx) => (
+            <div
+              key={idx}
+              className={`border-2 border-slate-900 p-8 sm:p-10 bg-white ${iss.shadow}`}
+            >
+              <div className="flex flex-wrap items-center justify-between gap-4 border-b-2 border-slate-200 pb-4 mb-6">
+                <div className="flex items-center gap-3">
+                  <span className="inline-block px-2.5 py-0.5 text-[11px] font-mono font-bold uppercase tracking-wider bg-slate-900 text-white">
+                    {iss.badge}
+                  </span>
+                  <span
+                    className="font-head text-xl font-bold text-slate-700 uppercase"
+                    dangerouslySetInnerHTML={{ __html: iss.num }}
+                  />
+                </div>
+                <span className="text-xs font-mono font-bold text-brand-600 uppercase tracking-wider">
+                  {iss.date}
                 </span>
-                <span className="text-xs text-slate-500">{iss.date}</span>
               </div>
-              <h2 className="font-display text-2xl font-bold text-slate-900 mb-4">
+
+              <h3 className="font-head text-2xl sm:text-3xl font-bold uppercase text-slate-900 mb-6 leading-snug">
                 {iss.title}
-              </h2>
-              <div className="mb-6">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
-                  Sommaire des articles :
-                </h3>
-                <ul className="space-y-2">
-                  {iss.articles.map((art) => (
-                    <li key={art} className="flex items-start gap-2 text-sm text-slate-700">
-                      <FileText className="w-4 h-4 text-brand-600 flex-shrink-0 mt-0.5" />
-                      <span>{art}</span>
-                    </li>
+              </h3>
+
+              <div className="mb-8">
+                <span className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-400 mb-3">
+                  Sommaire des contributions scientifiques :
+                </span>
+                <div className="space-y-3">
+                  {iss.articles.map((art, aIdx) => (
+                    <div
+                      key={aIdx}
+                      className="p-4 bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2"
+                    >
+                      <div className="flex items-start gap-3">
+                        <FileText className="w-5 h-5 text-brand-600 shrink-0 mt-0.5" />
+                        <div>
+                          <p className="font-medium text-slate-900 text-sm sm:text-base">
+                            {art.titre}
+                          </p>
+                          <p className="text-xs text-slate-500 font-mono mt-0.5">
+                            {art.auteur}
+                          </p>
+                        </div>
+                      </div>
+                      <span className="text-xs font-mono font-bold text-slate-400 shrink-0 self-end sm:self-center">
+                        {art.pages}
+                      </span>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 border-2 border-brand-600 text-brand-600 hover:bg-brand-600 hover:text-white px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-colors"
-              >
-                <Download className="w-4 h-4" />
-                <span>Télécharger le numéro complet (PDF)</span>
-              </Link>
+
+              <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-200">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white font-head font-bold uppercase text-xs tracking-wider px-6 py-3 border-2 border-slate-900 shadow-[3px_3px_0_#0f172a] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>Télécharger le numéro complet (PDF)</span>
+                </Link>
+
+                <span className="text-xs font-mono text-slate-500">
+                  ISSN : 2602-5841 &bull; Indexé &bull; Libre accès académique
+                </span>
+              </div>
             </div>
           ))}
         </div>
+
+        {/* Appel à contributions scientifiques */}
+        <div className="border-2 border-slate-900 bg-slate-900 text-white p-8 sm:p-12 shadow-[10px_10px_0_#004b88] mb-12 flex flex-col lg:flex-row items-center justify-between gap-8">
+          <div className="max-w-2xl">
+            <span className="inline-block px-2.5 py-1 text-xs font-mono font-bold uppercase tracking-wider bg-brand-500 text-white mb-3">
+              APPEL À SOUMISSION SCIENTIFIQUE
+            </span>
+            <h3 className="font-head text-3xl sm:text-4xl font-bold uppercase text-white leading-tight mb-3">
+              Chercheurs & Universitaires : Proposez Votre Article
+            </h3>
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+              Le comité éditorial reçoit en continu des articles de recherche originaux, des synthèses théoriques et des études empiriques de terrain. Chaque texte est évalué anonymement par deux relecteurs indépendants.
+            </p>
+          </div>
+          <Link
+            href="/contact"
+            className="shrink-0 inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white font-head font-bold uppercase text-xs tracking-wider px-8 py-4 border-2 border-white shadow-[4px_4px_0_#ffffff] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+          >
+            <span>Soumettre un manuscrit</span>
+            <span>&rarr;</span>
+          </Link>
+        </div>
+
+        {/* Liens de bas de page */}
+        <div className="pt-6 border-t-2 border-slate-200 flex flex-wrap items-center justify-between gap-4">
+          <Link
+            href="/recherche"
+            className="section-link group text-sm"
+          >
+            <span>&larr; Retour au Pôle Recherche Scientifique</span>
+          </Link>
+
+          <Link
+            href="/recherche/colloques"
+            className="section-link group text-sm"
+          >
+            <span>Consulter les Colloques Scientifiques &rarr;</span>
+          </Link>
+        </div>
+
       </section>
     </div>
   );
